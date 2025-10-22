@@ -1,0 +1,137 @@
+{
+  "app": {
+    "title": "Chafa GUI",
+    "description": "Image to ANSI Art Converter"
+  },
+  "header": {
+    "title": "Chafa GUI - Image to ANSI Art"
+  },
+  "controls": {
+    "selectImage": "Select Image",
+    "saveOutput": "Save Output",
+    "noImage": "No image selected"
+  },
+  "options": {
+    "title": "Options",
+    "format": {
+      "label": "Format",
+      "symbols": "Symbols (Text)",
+      "sixels": "Sixels",
+      "kitty": "Kitty Graphics",
+      "iterm2": "iTerm2 Inline"
+    },
+    "colors": {
+      "label": "Colors",
+      "2": "2 Colors (Monochrome)",
+      "8": "8 Colors (ANSI)",
+      "16": "16 Colors (ANSI Extended)",
+      "256": "256 Colors",
+      "full": "Full Color (24-bit)"
+    },
+    "size": {
+      "label": "Size",
+      "placeholder": "e.g., 80x24"
+    },
+    "scale": {
+      "label": "Scale",
+      "placeholder": "e.g., 1.0"
+    },
+    "symbols": {
+      "label": "Symbol Set",
+      "all": "All Symbols",
+      "ascii": "ASCII Only",
+      "block": "Block Elements",
+      "border": "Border Elements",
+      "space": "Space Only"
+    },
+    "fill": {
+      "label": "Fill Mode",
+      "builtin": "Built-in",
+      "solid": "Solid",
+      "stipple": "Stipple"
+    },
+    "dither": {
+      "label": "Dither",
+      "none": "None",
+      "ordered": "Ordered",
+      "diffusion": "Diffusion"
+    },
+    "ditherIntensity": {
+      "label": "Dither Intensity"
+    },
+    "background": {
+      "label": "Background Color",
+      "placeholder": "#000000"
+    },
+    "foreground": {
+      "label": "Foreground Color",
+      "placeholder": "#ffffff"
+    },
+    "advanced": {
+      "title": "Advanced Options",
+      "fgOnly": "Foreground Only",
+      "invert": "Invert Colors",
+      "stretch": "Stretch Image",
+      "preprocess": "Preprocess",
+      "work": {
+        "label": "Work Factor",
+        "tooltip": "1-9, higher = better quality but slower"
+      },
+      "colorSpace": {
+        "label": "Color Space",
+        "rgb": "RGB",
+        "din99d": "DIN99d"
+      },
+      "colorExtractor": {
+        "label": "Color Extractor",
+        "average": "Average",
+        "median": "Median"
+      }
+    }
+  },
+  "preview": {
+    "title": "Preview",
+    "loading": "Converting...",
+    "error": "Conversion failed",
+    "noImage": "No image to preview",
+    "chafaNotFound": "Chafa not installed"
+  },
+  "status": {
+    "ready": "Ready",
+    "converting": "Converting...",
+    "success": "Conversion successful",
+    "error": "Error: {{message}}",
+    "saved": "Saved to {{path}}"
+  },
+  "errors": {
+    "chafaNotFound": "Chafa is not installed. Please install it:\n\nmacOS: brew install chafa\nLinux: sudo apt install chafa (or sudo dnf install chafa)\nWindows: Download from https://hpjansson.org/chafa/download/",
+    "imageLoadFailed": "Failed to load image",
+    "conversionFailed": "Conversion failed: {{error}}",
+    "saveFailed": "Failed to save file: {{error}}"
+  },
+  "dialogs": {
+    "selectImage": {
+      "title": "Select an image",
+      "filters": {
+        "images": "Image Files"
+      }
+    },
+    "saveOutput": {
+      "title": "Save output",
+      "defaultName": "output.txt"
+    }
+  },
+  "settings": {
+    "language": "Language",
+    "theme": "Theme",
+    "auto": "Auto",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "about": {
+    "version": "Version {{version}}",
+    "builtWith": "Built with Tauri, React, and Chafa",
+    "license": "MIT License",
+    "repository": "GitHub Repository"
+  }
+}

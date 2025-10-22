@@ -4,13 +4,16 @@ import {
   CheckCircle, AlertCircle, Loader, Palette, Grid3x3,
   Sliders, Eye, FileImage
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import AnsiRenderer from './components/AnsiRenderer';
+import LanguageSwitcher from './components/LanguageSwitcher';
 // Tauri API v2
 import { invoke } from '@tauri-apps/api/core';
 import { open, save } from '@tauri-apps/plugin-dialog';
 import { readFile, writeTextFile } from '@tauri-apps/plugin-fs';
 
 function App() {
+  const { t } = useTranslation();
   const [imagePath, setImagePath] = useState('');
   const [imagePreview, setImagePreview] = useState('');
   const [imageFile, setImageFile] = useState(null);
@@ -226,16 +229,19 @@ function App() {
         <div className="p-6">
           {/* Header */}
           <div className="mb-6 pb-6 border-b border-gray-700/50">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-lg">
-                <ImageIcon className="w-7 h-7 text-white" />
+            <div className="flex items-center justify-between gap-3 mb-3">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-lg">
+                  <ImageIcon className="w-7 h-7 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                    {t('app.title')}
+                  </h1>
+                  <p className="text-xs text-gray-400">{t('app.description')}</p>
+                </div>
               </div>
-              <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                  Chafa GUI
-                </h1>
-                <p className="text-xs text-gray-400">图片转ANSI艺术工具</p>
-              </div>
+              <LanguageSwitcher />
             </div>
             {chafaVersion && (
               <div className="flex items-center gap-2 mt-3 px-3 py-2 bg-gray-700/30 rounded-lg border border-gray-600/30">

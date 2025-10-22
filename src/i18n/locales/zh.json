@@ -1,0 +1,137 @@
+{
+  "app": {
+    "title": "Chafa GUI",
+    "description": "图片转 ANSI 艺术转换器"
+  },
+  "header": {
+    "title": "Chafa GUI - 图片转 ANSI 艺术"
+  },
+  "controls": {
+    "selectImage": "选择图片",
+    "saveOutput": "保存输出",
+    "noImage": "未选择图片"
+  },
+  "options": {
+    "title": "选项",
+    "format": {
+      "label": "格式",
+      "symbols": "符号（文本）",
+      "sixels": "Sixels",
+      "kitty": "Kitty 图形",
+      "iterm2": "iTerm2 内联"
+    },
+    "colors": {
+      "label": "颜色",
+      "2": "2 色（单色）",
+      "8": "8 色（ANSI）",
+      "16": "16 色（ANSI 扩展）",
+      "256": "256 色",
+      "full": "全彩（24位）"
+    },
+    "size": {
+      "label": "尺寸",
+      "placeholder": "例如：80x24"
+    },
+    "scale": {
+      "label": "缩放",
+      "placeholder": "例如：1.0"
+    },
+    "symbols": {
+      "label": "符号集",
+      "all": "所有符号",
+      "ascii": "仅 ASCII",
+      "block": "块元素",
+      "border": "边框元素",
+      "space": "仅空格"
+    },
+    "fill": {
+      "label": "填充模式",
+      "builtin": "内置",
+      "solid": "实心",
+      "stipple": "点状"
+    },
+    "dither": {
+      "label": "抖动",
+      "none": "无",
+      "ordered": "有序",
+      "diffusion": "扩散"
+    },
+    "ditherIntensity": {
+      "label": "抖动强度"
+    },
+    "background": {
+      "label": "背景颜色",
+      "placeholder": "#000000"
+    },
+    "foreground": {
+      "label": "前景颜色",
+      "placeholder": "#ffffff"
+    },
+    "advanced": {
+      "title": "高级选项",
+      "fgOnly": "仅前景",
+      "invert": "反转颜色",
+      "stretch": "拉伸图片",
+      "preprocess": "预处理",
+      "work": {
+        "label": "工作因子",
+        "tooltip": "1-9，越高质量越好但速度越慢"
+      },
+      "colorSpace": {
+        "label": "色彩空间",
+        "rgb": "RGB",
+        "din99d": "DIN99d"
+      },
+      "colorExtractor": {
+        "label": "颜色提取器",
+        "average": "平均",
+        "median": "中位数"
+      }
+    }
+  },
+  "preview": {
+    "title": "预览",
+    "loading": "转换中...",
+    "error": "转换失败",
+    "noImage": "没有图片可预览",
+    "chafaNotFound": "未安装 Chafa"
+  },
+  "status": {
+    "ready": "就绪",
+    "converting": "转换中...",
+    "success": "转换成功",
+    "error": "错误：{{message}}",
+    "saved": "已保存到 {{path}}"
+  },
+  "errors": {
+    "chafaNotFound": "未安装 Chafa。请安装：\n\nmacOS: brew install chafa\nLinux: sudo apt install chafa（或 sudo dnf install chafa）\nWindows: 从 https://hpjansson.org/chafa/download/ 下载",
+    "imageLoadFailed": "加载图片失败",
+    "conversionFailed": "转换失败：{{error}}",
+    "saveFailed": "保存文件失败：{{error}}"
+  },
+  "dialogs": {
+    "selectImage": {
+      "title": "选择图片",
+      "filters": {
+        "images": "图片文件"
+      }
+    },
+    "saveOutput": {
+      "title": "保存输出",
+      "defaultName": "output.txt"
+    }
+  },
+  "settings": {
+    "language": "语言",
+    "theme": "主题",
+    "auto": "自动",
+    "light": "浅色",
+    "dark": "深色"
+  },
+  "about": {
+    "version": "版本 {{version}}",
+    "builtWith": "使用 Tauri、React 和 Chafa 构建",
+    "license": "MIT 许可证",
+    "repository": "GitHub 仓库"
+  }
+}
