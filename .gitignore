@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build output
+dist/
+build/
+release/
+*.log
+
+# Build artifacts
+*.AppImage
+*.deb
+*.rpm
+*.exe
+*.zip
+chafa-gui-*-x64/
+chafa-gui-source.tar.gz
+src-tauri/target/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Electron
+out/
+
+# Uploads
+uploads/
+*.tmp
+
+# 备份和临时文件
+已清理文件-备份-*/
+已废弃的文件-备份-*/
+*.backup
+*.old
