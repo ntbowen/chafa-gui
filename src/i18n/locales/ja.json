@@ -13,12 +13,15 @@
   },
   "options": {
     "title": "オプション",
+    "autoConvert": "自動変換",
+    "autoConvertHelp": "パラメータ変更時に自動変換",
     "format": {
       "label": "フォーマット",
       "symbols": "シンボル（テキスト）",
       "sixels": "Sixels",
       "kitty": "Kitty グラフィックス",
-      "iterm2": "iTerm2 インライン"
+      "iterm2": "iTerm2 インライン",
+      "help": "出力形式を選択。シンボルはテキスト文字、他はターミナルグラフィックスプロトコル"
     },
     "colors": {
       "label": "色",
@@ -26,15 +29,18 @@
       "8": "8色（ANSI）",
       "16": "16色（ANSI拡張）",
       "256": "256色",
-      "full": "フルカラー（24ビット）"
+      "full": "フルカラー（24ビット）",
+      "help": "色数が多いほど品質が向上しますが、ファイルサイズも大きくなります"
     },
     "size": {
       "label": "サイズ",
-      "placeholder": "例：80x24"
+      "placeholder": "例：80x24",
+      "help": "出力の列数と行数を制御。形式: 幅x高さ。一般的: 80x24, 120x40"
     },
     "scale": {
       "label": "スケール",
-      "placeholder": "例：1.0"
+      "placeholder": "例：1.0",
+      "help": "画像の拡大縮小倍率。\"max\"で自動的に最大サイズに合わせます"
     },
     "symbols": {
       "label": "シンボルセット",
@@ -42,19 +48,22 @@
       "ascii": "ASCII のみ",
       "block": "ブロック要素",
       "border": "ボーダー要素",
-      "space": "スペースのみ"
+      "space": "スペースのみ",
+      "help": "画像レンダリングに使用するシンボルセット"
     },
     "fill": {
       "label": "塗りつぶしモード",
       "builtin": "ビルトイン",
       "solid": "ソリッド",
-      "stipple": "スティップル"
+      "stipple": "スティップル",
+      "help": "ピクセルの塗りつぶし方法"
     },
     "dither": {
       "label": "ディザリング",
       "none": "なし",
       "ordered": "順序付き",
-      "diffusion": "拡散"
+      "diffusion": "拡散",
+      "help": "色のグラデーションを改善するディザリングアルゴリズム"
     },
     "ditherIntensity": {
       "label": "ディザリング強度"
@@ -70,17 +79,25 @@
     "advanced": {
       "title": "詳細オプション",
       "fgOnly": "前景のみ",
+      "fgOnlyHelp": "背景色を設定せず、透明な背景を使用",
       "invert": "色を反転",
+      "invertHelp": "前景色と背景色を入れ替え",
       "stretch": "画像を伸縮",
+      "stretchHelp": "アスペクト比を無視して引き伸ばす",
       "preprocess": "前処理",
+      "preprocessHelp": "画像前処理を有効にして品質を向上",
       "work": {
         "label": "作業係数",
-        "tooltip": "1-9、高いほど品質が良いが遅い"
+        "tooltip": "1-9、高いほど品質が良いが遅い",
+        "help": "数値が大きいほど品質が向上しますが、変換速度が低下します",
+        "fast": "高速",
+        "best": "最高品質"
       },
       "colorSpace": {
         "label": "色空間",
         "rgb": "RGB",
-        "din99d": "DIN99d"
+        "din99d": "DIN99d",
+        "help": "色計算方法。RGBは高速、DIN99dは高精度"
       },
       "colorExtractor": {
         "label": "カラー抽出",

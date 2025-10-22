@@ -13,28 +13,34 @@
   },
   "options": {
     "title": "옵션",
+    "autoConvert": "자동 변환",
+    "autoConvertHelp": "매개변수 변경 시 자동으로 변환",
     "format": {
       "label": "형식",
       "symbols": "기호 (텍스트)",
       "sixels": "Sixels",
-      "kitty": "Kitty 그래픽",
-      "iterm2": "iTerm2 인라인"
+      "kitty": "Kitty 그래픽스",
+      "iterm2": "iTerm2 인라인",
+      "help": "출력 형식을 선택합니다. 기호는 텍스트 문자를 사용하고, 다른 것들은 터미널 그래픽 프로토콜입니다"
     },
     "colors": {
       "label": "색상",
-      "2": "2색 (흑백)",
+      "2": "2색 (단색)",
       "8": "8색 (ANSI)",
       "16": "16색 (ANSI 확장)",
       "256": "256색",
-      "full": "풀컬러 (24비트)"
+      "full": "풀 컴러 (24비트)",
+      "help": "색상이 많을수록 품질이 향상되지만 파일 크기도 커집니다"
     },
     "size": {
       "label": "크기",
-      "placeholder": "예: 80x24"
+      "placeholder": "예: 80x24",
+      "help": "출력 열과 행 수를 제어합니다. 형식: 너비x높이. 일반적: 80x24, 120x40"
     },
     "scale": {
       "label": "배율",
-      "placeholder": "예: 1.0"
+      "placeholder": "예: 1.0",
+      "help": "이미지 확대/축소 배율. \"max\"로 자동으로 최대 크기에 맞춤니다"
     },
     "symbols": {
       "label": "기호 세트",
@@ -42,19 +48,22 @@
       "ascii": "ASCII만",
       "block": "블록 요소",
       "border": "테두리 요소",
-      "space": "공백만"
+      "space": "공백만",
+      "help": "이미지 렌더링에 사용할 기호 세트"
     },
     "fill": {
       "label": "채우기 모드",
-      "builtin": "내장",
+      "builtin": "기본 제공",
       "solid": "솔리드",
-      "stipple": "점묘"
+      "stipple": "점묘",
+      "help": "픽셀 채우기 방법"
     },
     "dither": {
       "label": "디더링",
       "none": "없음",
-      "ordered": "정렬",
-      "diffusion": "확산"
+      "ordered": "정렬됨",
+      "diffusion": "확산",
+      "help": "색상 그라데이션을 개선하는 디더링 알고리즘"
     },
     "ditherIntensity": {
       "label": "디더링 강도"
@@ -70,17 +79,25 @@
     "advanced": {
       "title": "고급 옵션",
       "fgOnly": "전경만",
+      "fgOnlyHelp": "배경색을 설정하지 않고 투명 배경 사용",
       "invert": "색상 반전",
-      "stretch": "이미지 늘이기",
+      "invertHelp": "전경색과 배경색을 바꾸기",
+      "stretch": "늘리기",
+      "stretchHelp": "종횡비를 무시하고 늘림",
       "preprocess": "전처리",
+      "preprocessHelp": "이미지 전처리를 활성화하여 품질 향상",
       "work": {
         "label": "작업 계수",
-        "tooltip": "1-9, 높을수록 품질이 좋지만 느림"
+        "tooltip": "1-9, 높을수록 품질은 좋지만 느림",
+        "help": "숫자가 클수록 품질이 향상되지만 변환 속도가 느려집니다",
+        "fast": "빠름",
+        "best": "최고 품질"
       },
       "colorSpace": {
         "label": "색 공간",
         "rgb": "RGB",
-        "din99d": "DIN99d"
+        "din99d": "DIN99d",
+        "help": "색상 계산 방법. RGB는 빠르고 DIN99d는 정확합니다"
       },
       "colorExtractor": {
         "label": "색상 추출기",
