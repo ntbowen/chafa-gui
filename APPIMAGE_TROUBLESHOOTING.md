@@ -1,6 +1,10 @@
 # AppImage 故障排除指南
 
-如果 AppImage 版本出现空白窗口，请尝试以下解决方案：
+## ✅ 最新修复（v1.0.1+）
+
+**EGL 错误已修复！** 最新版本已在应用启动时自动禁用硬件加速，解决了 `Could not create default EGL display: EGL_BAD_PARAMETER` 错误。
+
+如果您仍然遇到问题，请尝试以下解决方案：
 
 ## 快速修复
 
