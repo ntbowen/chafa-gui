@@ -39,6 +39,10 @@
     "linux": {
       "deb": {
         "depends": ["chafa"]
+      },
+      "appimage": {
+        "bundleMediaFramework": true,
+        "files": {}
       }
     }
   },

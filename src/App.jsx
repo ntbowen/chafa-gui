@@ -229,24 +229,24 @@ function App() {
         <div className="p-6">
           {/* Header */}
           <div className="mb-6 pb-6 border-b border-gray-700/50">
-            <div className="flex items-center justify-between gap-3 mb-3">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-lg">
-                  <ImageIcon className="w-7 h-7 text-white" />
-                </div>
-                <div>
-                  <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                    {t('app.title')}
-                  </h1>
-                  <p className="text-xs text-gray-400">{t('app.description')}</p>
-                </div>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="p-2 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-lg">
+                <ImageIcon className="w-7 h-7 text-white" />
               </div>
-              <LanguageSwitcher />
+              <div className="flex-1">
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                  {t('app.title')}
+                </h1>
+                <p className="text-xs text-gray-400">{t('app.description')}</p>
+              </div>
             </div>
             {chafaVersion && (
-              <div className="flex items-center gap-2 mt-3 px-3 py-2 bg-gray-700/30 rounded-lg border border-gray-600/30">
-                <CheckCircle className="w-3 h-3 text-green-400" />
-                <p className="text-xs text-gray-400">{chafaVersion.split('\n')[0]}</p>
+              <div className="flex items-center justify-between gap-3 mt-3 px-3 py-2 bg-gray-700/30 rounded-lg border border-gray-600/30">
+                <div className="flex items-center gap-2 flex-1 min-w-0">
+                  <CheckCircle className="w-3 h-3 text-green-400 flex-shrink-0" />
+                  <p className="text-xs text-gray-400 truncate">{chafaVersion.split('\n')[0]}</p>
+                </div>
+                <LanguageSwitcher />
               </div>
             )}
           </div>

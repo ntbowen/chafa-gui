@@ -23,7 +23,7 @@ const LanguageSwitcher = () => {
   return (
     <div className="relative group">
       <button
-        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-700/50 text-gray-100 hover:bg-gray-700 transition-colors border border-gray-600/30"
         title={t('settings.language')}
       >
         <Globe className="w-4 h-4" />
