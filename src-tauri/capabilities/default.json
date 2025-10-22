@@ -5,6 +5,10 @@
   "permissions": [
     "core:default",
     "dialog:default",
-    "fs:default"
+    "dialog:open",
+    "dialog:save",
+    "fs:default",
+    "fs:allow-read-file",
+    "fs:allow-write-text-file"
   ]
 }

@@ -52,23 +52,5 @@
     "externalBin": [],
     "resources": []
   },
-  "plugins": {
-    "fs": {
-      "scope": [
-        "$HOME/**",
-        "$DESKTOP/**",
-        "$DOCUMENT/**",
-        "$DOWNLOAD/**",
-        "$PICTURE/**"
-      ]
-    },
-    "dialog": {
-      "open": {
-        "enable": true
-      },
-      "save": {
-        "enable": true
-      }
-    }
-  }
+  "plugins": {}
 }

@@ -4,7 +4,7 @@
   "description": "A modern cross-platform GUI frontend for Chafa image-to-ANSI converter",
   "homepage": "https://github.com/yourusername/chafa-gui",
   "scripts": {
-    "dev": "tauri dev",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "tauri": "tauri",
