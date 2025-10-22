@@ -243,6 +243,15 @@ fn get_system_info() -> String {
 }
 
 fn main() {
+    // 设置环境变量以禁用硬件加速 - 修复AppImage空白问题
+    #[cfg(target_os = "linux")]
+    {
+        std::env::set_var("WEBKIT_DISABLE_COMPOSITING_MODE", "1");
+        std::env::set_var("WEBKIT_DISABLE_DMABUF_RENDERER", "1");
+        std::env::set_var("GDK_BACKEND", "x11");
+        println!("🔧 Disabled hardware acceleration for better compatibility");
+    }
+    
     tauri::Builder::default()
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_fs::init())
