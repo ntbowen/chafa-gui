@@ -47,7 +47,9 @@
       },
       "appimage": {
         "bundleMediaFramework": true,
-        "files": {}
+        "files": {
+          "../AppRun": "AppRun"
+        }
       }
     },
     "macOS": {

@@ -235,16 +235,11 @@ fn get_system_info() -> String {
 }
 
 fn main() {
-    // 仅在AppImage环境中禁用硬件加速 - 修复AppImage空白问题
-    // RPM/DEB包使用系统WebKit库，不需要此修复
+    // 检测运行环境并记录日志
     #[cfg(target_os = "linux")]
     {
-        // 检测是否在AppImage中运行
         if std::env::var("APPIMAGE").is_ok() || std::env::var("APPDIR").is_ok() {
-            std::env::set_var("WEBKIT_DISABLE_COMPOSITING_MODE", "1");
-            std::env::set_var("WEBKIT_DISABLE_DMABUF_RENDERER", "1");
-            std::env::set_var("GDK_BACKEND", "x11");
-            println!("🔧 AppImage detected: Disabled hardware acceleration for compatibility");
+            println!("🔧 Running as AppImage (environment variables set by AppRun script)");
         } else {
             println!("✅ Using system WebKit libraries (RPM/DEB package)");
         }

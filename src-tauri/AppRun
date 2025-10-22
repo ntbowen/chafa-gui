@@ -1,0 +1,17 @@
+#!/bin/bash
+# AppImage 启动脚本 - 在启动前设置环境变量
+
+SELF=$(readlink -f "$0")
+HERE=${SELF%/*}
+
+# 设置环境变量以禁用 WebView 硬件加速
+export WEBKIT_DISABLE_COMPOSITING_MODE=1
+export WEBKIT_DISABLE_DMABUF_RENDERER=1
+export GDK_BACKEND=x11
+export LIBGL_ALWAYS_SOFTWARE=1
+export WEBKIT_DISABLE_SANDBOX=1
+
+echo "🔧 AppImage: Applied compatibility settings before launch"
+
+# 运行实际程序
+exec "${HERE}/usr/bin/chafa-gui" "$@"
