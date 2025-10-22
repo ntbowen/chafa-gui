@@ -196,8 +196,13 @@ jobs:
     needs: [build-linux, build-windows, build-macos]
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
+    permissions:
+      contents: write
     
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
@@ -206,16 +211,116 @@ jobs:
       - name: Display structure
         run: ls -R artifacts
 
+      - name: Organize release files
+        run: |
+          mkdir -p release
+          
+          # Linux files
+          find artifacts/linux-deb -name "*.deb" -exec cp {} release/ \;
+          find artifacts/linux-rpm -name "*.rpm" -exec cp {} release/ \;
+          find artifacts/linux-appimage -name "*.AppImage" -exec cp {} release/ \; || true
+          
+          # Windows files
+          find artifacts/windows-x64 -name "*.zip" -exec cp {} release/ \;
+          
+          # macOS files
+          find artifacts/macos-x64-dmg -name "*.dmg" -exec cp {} release/chafa-gui-macos-intel.dmg \; || true
+          find artifacts/macos-aarch64-dmg -name "*.dmg" -exec cp {} release/chafa-gui-macos-apple-silicon.dmg \; || true
+          
+          # List all files
+          ls -lh release/
+
+      - name: Generate Release Notes
+        run: |
+          cat > release_notes.md << 'EOF'
+          # Chafa GUI ${{ github.ref_name }}
+          
+          Cross-platform Tauri desktop application for Chafa image to ANSI art conversion.
+          
+          ## 🎯 Supported Platforms
+          
+          ### Linux x86-64
+          - **RPM Package** - For Fedora/RHEL/CentOS
+          - **DEB Package** - For Debian/Ubuntu
+          - **AppImage** - Universal Linux package
+          
+          ### Windows x86-64
+          - **ZIP Package** - Extract and run
+          - Requirements: Windows 10 1809+ or Windows 11
+          - Need to install: Chafa for Windows, WebView2 Runtime
+          
+          ### macOS
+          - **Intel DMG** - For Intel-based Macs (macOS 10.15+)
+          - **Apple Silicon DMG** - For M1/M2/M3 Macs (macOS 11.0+)
+          - Requirement: Chafa (install via `brew install chafa`)
+          
+          ## 📦 Installation
+          
+          ### Linux (Fedora/RHEL)
+          \`\`\`bash
+          sudo rpm -ivh Chafa\ GUI-*.rpm
+          chafa-gui
+          \`\`\`
+          
+          ### Linux (Debian/Ubuntu)
+          \`\`\`bash
+          sudo dpkg -i chafa-gui_*.deb
+          chafa-gui
+          \`\`\`
+          
+          ### Linux (AppImage)
+          \`\`\`bash
+          chmod +x Chafa-GUI-*.AppImage
+          ./Chafa-GUI-*.AppImage
+          \`\`\`
+          
+          ### Windows
+          1. Extract `chafa-gui-windows-x64.zip`
+          2. Install [Chafa for Windows](https://hpjansson.org/chafa/download/)
+          3. Double-click `chafa-gui.exe`
+          
+          ### macOS
+          1. Download the appropriate DMG (Intel or Apple Silicon)
+          2. Install Chafa: `brew install chafa`
+          3. Open the DMG and drag the app to Applications
+          4. Right-click and select "Open" (first time only)
+          
+          ## ✨ Features
+          
+          - 🎨 Modern React UI with TailwindCSS
+          - 🖼️ Real-time ANSI art preview
+          - 💾 Native file dialogs
+          - ⚡ Fast native performance (Tauri + Rust)
+          - 🔧 Multiple output modes (symbols, sixels, kitty, iterm2)
+          - 🎨 Full color support (2/8/16/256/full colors)
+          - 📏 Customizable output dimensions
+          
+          ## 📚 Documentation
+          
+          - [User Guide](https://github.com/ntbowen/chafa-gui/blob/main/README.md)
+          - [Build Instructions](https://github.com/ntbowen/chafa-gui/tree/main/docs)
+          
+          ## 🐛 Bug Reports
+          
+          Please report issues at: https://github.com/ntbowen/chafa-gui/issues
+          
+          ## 💡 About
+          
+          Built with:
+          - [Tauri 2.9](https://tauri.app/) - Application framework
+          - [React 18](https://react.dev/) - UI framework
+          - [Chafa](https://hpjansson.org/chafa/) - Image conversion engine
+          - [Rust](https://www.rust-lang.org/) - Backend language
+          EOF
+          cat release_notes.md
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            artifacts/**/*.deb
-            artifacts/**/*.rpm
-            artifacts/**/*.AppImage
-            artifacts/**/*.zip
-            artifacts/**/*.dmg
+          files: release/*
+          body_path: release_notes.md
           draft: false
           prerelease: false
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
