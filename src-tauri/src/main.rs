@@ -4,6 +4,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use std::process::Command;
+use std::path::PathBuf;
 use serde::{Deserialize, Serialize};
 use tauri::Manager;
 
@@ -36,12 +37,62 @@ struct ChafaResult {
     error: Option<String>,
 }
 
+/// 查找 chafa 可执行文件路径
+fn find_chafa() -> Option<PathBuf> {
+    // 首先尝试 PATH 中的 chafa
+    if which::which("chafa").is_ok() {
+        return Some(PathBuf::from("chafa"));
+    }
+    
+    // macOS Homebrew 常见路径
+    #[cfg(target_os = "macos")]
+    {
+        let homebrew_paths = vec![
+            "/opt/homebrew/bin/chafa",      // Apple Silicon
+            "/usr/local/bin/chafa",          // Intel Mac
+            "/opt/local/bin/chafa",          // MacPorts
+        ];
+        
+        for path in homebrew_paths {
+            let path_buf = PathBuf::from(path);
+            if path_buf.exists() {
+                println!("Found chafa at: {}", path);
+                return Some(path_buf);
+            }
+        }
+    }
+    
+    // Linux 常见路径
+    #[cfg(target_os = "linux")]
+    {
+        let linux_paths = vec![
+            "/usr/bin/chafa",
+            "/usr/local/bin/chafa",
+        ];
+        
+        for path in linux_paths {
+            let path_buf = PathBuf::from(path);
+            if path_buf.exists() {
+                return Some(path_buf);
+            }
+        }
+    }
+    
+    None
+}
+
 /// 检查chafa是否安装
 #[tauri::command]
 fn check_chafa() -> Result<String, String> {
     println!("Checking chafa installation...");
     
-    match Command::new("chafa").arg("--version").output() {
+    let chafa_path = find_chafa().ok_or_else(|| {
+        "Chafa not found. Please install chafa:\n\nmacOS: brew install chafa\nLinux: sudo apt install chafa (or sudo dnf install chafa)\nWindows: Download from https://hpjansson.org/chafa/download/".to_string()
+    })?;
+    
+    println!("Using chafa at: {:?}", chafa_path);
+    
+    match Command::new(&chafa_path).arg("--version").output() {
         Ok(output) => {
             if output.status.success() {
                 let version = String::from_utf8_lossy(&output.stdout).trim().to_string();
@@ -66,7 +117,11 @@ fn check_chafa() -> Result<String, String> {
 fn convert_image(image_path: String, options: ChafaOptions) -> Result<String, String> {
     println!("Converting image: {}", image_path);
     
-    let mut cmd = Command::new("chafa");
+    let chafa_path = find_chafa().ok_or_else(|| {
+        "Chafa not found. Please install chafa first.".to_string()
+    })?;
+    
+    let mut cmd = Command::new(&chafa_path);
     
     // 构建命令参数
     if let Some(format) = options.format {
@@ -193,13 +248,28 @@ fn main() {
         .plugin(tauri_plugin_fs::init())
         .setup(|app| {
             // 检查chafa是否可用
-            match Command::new("chafa").arg("--version").output() {
-                Ok(output) if output.status.success() => {
-                    let version = String::from_utf8_lossy(&output.stdout);
-                    println!("✅ Chafa installed: {}", version.trim());
+            match find_chafa() {
+                Some(path) => {
+                    match Command::new(&path).arg("--version").output() {
+                        Ok(output) if output.status.success() => {
+                            let version = String::from_utf8_lossy(&output.stdout);
+                            println!("✅ Chafa found at: {:?}", path);
+                            println!("   Version: {}", version.trim());
+                        }
+                        _ => {
+                            eprintln!("⚠️  Warning: Chafa found but failed to get version.");
+                        }
+                    }
                 }
-                _ => {
-                    eprintln!("⚠️  Warning: Chafa not found. Please install chafa to use this application.");
+                None => {
+                    eprintln!("⚠️  Warning: Chafa not found in common locations.");
+                    eprintln!("   Please install chafa to use this application:");
+                    #[cfg(target_os = "macos")]
+                    eprintln!("   macOS: brew install chafa");
+                    #[cfg(target_os = "linux")]
+                    eprintln!("   Linux: sudo apt install chafa (or sudo dnf install chafa)");
+                    #[cfg(target_os = "windows")]
+                    eprintln!("   Windows: Download from https://hpjansson.org/chafa/download/");
                 }
             }
             
