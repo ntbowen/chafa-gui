@@ -5,8 +5,7 @@
 
 use std::process::Command;
 use std::path::PathBuf;
-use serde::{Deserialize, Serialize};
-use tauri::Manager;
+use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -28,13 +27,6 @@ struct ChafaOptions {
     work: Option<String>,
     color_space: Option<String>,
     color_extractor: Option<String>,
-}
-
-#[derive(Debug, Serialize)]
-struct ChafaResult {
-    success: bool,
-    output: Option<String>,
-    error: Option<String>,
 }
 
 /// 查找 chafa 可执行文件路径
@@ -261,7 +253,7 @@ fn main() {
     tauri::Builder::default()
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_fs::init())
-        .setup(|app| {
+        .setup(|_app| {
             // 检查chafa是否可用
             match find_chafa() {
                 Some(path) => {
