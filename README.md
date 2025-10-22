@@ -31,19 +31,40 @@ Built with **Tauri 2.9 + Rust + React**, achieving **96% smaller size** than Ele
   sudo apt install chafa
   ```
 
-### Install (Fedora/RHEL)
+### Installation
 
+#### ✅ Recommended: Native Packages (Best Compatibility)
+
+**Fedora/RHEL/CentOS:**
 ```bash
-sudo rpm -ivh "Chafa GUI-1.0.0-1.x86_64.rpm"
-chafa-gui
+sudo dnf install ./Chafa-GUI-*.rpm
+# or
+sudo rpm -i Chafa-GUI-*.rpm
 ```
 
-### Run AppImage
+**Debian/Ubuntu:**
+```bash
+sudo apt install ./Chafa-GUI_*.deb
+# or
+sudo dpkg -i Chafa-GUI_*.deb
+```
+
+**Benefits:**
+- Uses system WebKit libraries
+- Full Wayland support
+- Better system integration
+- ✅ Verified on Fedora 43 + GNOME Wayland
+
+#### 🟡 AppImage (有兼容性限制)
 
 ```bash
-chmod +x Chafa-GUI-1.0.0-x86_64.AppImage
-./Chafa-GUI-1.0.0-x86_64.AppImage
+chmod +x Chafa-GUI_*.AppImage
+./Chafa-GUI_*.AppImage
 ```
+
+**⚠️ Known Issue:** AppImage may show blank window on Wayland sessions (Fedora 43, etc). 
+- **Workaround**: Use X11 session or native packages (RPM/DEB)
+- **Details**: See [APPIMAGE_KNOWN_ISSUES.md](APPIMAGE_KNOWN_ISSUES.md)
 
 ---
 
