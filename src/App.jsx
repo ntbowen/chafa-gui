@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   Upload, Settings, Copy, Download, Image as ImageIcon, 
   CheckCircle, AlertCircle, Loader, Palette, Grid3x3,
-  Sliders, Eye, FileImage
+  Sliders, Eye, FileImage, Maximize2, ZoomIn, Type, 
+  Droplet, Sparkles, Gauge, Paintbrush
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import AnsiRenderer from './components/AnsiRenderer';
@@ -93,7 +94,7 @@ function App() {
       const version = await invoke('check_chafa');
       setChafaVersion(version);
     } catch (err) {
-      setError('未找到 Chafa。请先安装 Chafa。');
+      setError(t('errors.chafaNotFound'));
       console.error('Chafa check failed:', err);
     }
   };
@@ -113,7 +114,7 @@ function App() {
       }
     } catch (err) {
       console.error('Failed to select file:', err);
-      setError('文件选择失败');
+      setError(t('errors.imageLoadFailed'));
     }
   };
 
@@ -140,7 +141,7 @@ function App() {
       setError('');
     } catch (err) {
       console.error('Failed to load file:', err);
-      setError('文件加载失败');
+      setError(t('errors.imageLoadFailed'));
     }
   };
 
@@ -178,11 +179,11 @@ function App() {
       
       console.log('转换成功，输出长度:', output.length);
       setAnsiOutput(output);
-      setSuccess('转换成功！');
+      setSuccess(t('status.success'));
       setTimeout(() => setSuccess(''), 3000);
     } catch (err) {
       console.error('转换错误:', err);
-      setError(String(err) || '转换失败');
+      setError(String(err) || t('errors.conversionFailed'));
     } finally {
       setLoading(false);
     }
@@ -190,7 +191,7 @@ function App() {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(ansiOutput);
-    setSuccess('已复制到剪贴板！');
+    setSuccess('Copied to clipboard!');
     setTimeout(() => setSuccess(''), 2000);
   };
 
@@ -208,12 +209,12 @@ function App() {
       if (filePath) {
         // 保存文件
         await writeTextFile(filePath, ansiOutput);
-        setSuccess(`文件已保存到: ${filePath}`);
+        setSuccess(`Saved to: ${filePath}`);
         setTimeout(() => setSuccess(''), 3000);
       }
     } catch (err) {
       console.error('Failed to save file:', err);
-      setError('保存文件失败');
+      setError(t('errors.saveFailed'));
       setTimeout(() => setError(''), 3000);
     }
   };
@@ -341,7 +342,8 @@ function App() {
 
             {/* Size */}
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                <Maximize2 className="w-4 h-4" />
                 {t('options.size.label')}
               </label>
               <input
@@ -352,14 +354,15 @@ function App() {
                 className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all hover:bg-gray-700/70 placeholder-gray-500"
               />
               <p className="text-xs text-gray-500 mt-1">
-                控制输出的列数和行数。格式: 宽x高。常用: 80x24, 120x40, 160x60
+                {t('options.size.placeholder')}
               </p>
             </div>
 
             {/* Scale */}
             <div>
-              <label className="block text-sm font-medium mb-2">
-                缩放
+              <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                <ZoomIn className="w-4 h-4" />
+                {t('options.scale.label')}
               </label>
               <input
                 type="text"
@@ -369,7 +372,7 @@ function App() {
                 className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all hover:bg-gray-700/70 placeholder-gray-500"
               />
               <p className="text-xs text-gray-500 mt-1">
-                图片缩放倍数。"max"自动适配最大尺寸，数字越大图像越细致
+                {t('options.scale.placeholder')}
               </p>
             </div>
 
@@ -377,43 +380,45 @@ function App() {
             {options.format === 'symbols' && (
               <>
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    符号集
+                  <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                    <Type className="w-4 h-4" />
+                    {t('options.symbols.label')}
                   </label>
                   <select
                     value={options.symbols}
                     onChange={(e) => updateOption('symbols', e.target.value)}
                     className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all cursor-pointer hover:bg-gray-700/70"
                   >
-                    <option value="all">全部符号</option>
-                    <option value="ascii">仅ASCII</option>
-                    <option value="block">方块元素</option>
-                    <option value="braille">盲文</option>
-                    <option value="half">半块</option>
-                    <option value="solid">实心块</option>
-                    <option value="space">空格</option>
+                    <option value="all">{t('options.symbols.all')}</option>
+                    <option value="ascii">{t('options.symbols.ascii')}</option>
+                    <option value="block">{t('options.symbols.block')}</option>
+                    <option value="braille">Braille</option>
+                    <option value="half">Half Block</option>
+                    <option value="solid">Solid</option>
+                    <option value="space">{t('options.symbols.space')}</option>
                   </select>
                   <p className="text-xs text-gray-500 mt-1">
-                    选择用于绘制的字符集。全部符号效果最好，ASCII兼容性最好
+                    Symbol set for image rendering
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    填充字符
+                  <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                    <Droplet className="w-4 h-4" />
+                    {t('options.fill.label')}
                   </label>
                   <select
                     value={options.fill}
                     onChange={(e) => updateOption('fill', e.target.value)}
                     className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all cursor-pointer hover:bg-gray-700/70"
                   >
-                    <option value="none">无</option>
-                    <option value="block">方块</option>
-                    <option value="stipple">点彩</option>
-                    <option value="braille">盲文</option>
+                    <option value="none">{t('options.fill.builtin')}</option>
+                    <option value="block">Block</option>
+                    <option value="stipple">{t('options.fill.stipple')}</option>
+                    <option value="braille">Braille</option>
                   </select>
                   <p className="text-xs text-gray-500 mt-1">
-                    用特定字符填充空白区域。无：不填充；其他：添加纹理效果
+                    Fill mode for pixels
                   </p>
                 </div>
               </>
@@ -422,28 +427,29 @@ function App() {
             {/* Dither */}
             <div>
               <label className="block text-sm font-medium mb-2 flex items-center gap-2">
-                <Sliders className="w-4 h-4" />
-                抖动
+                <Sparkles className="w-4 h-4" />
+                {t('options.dither.label')}
               </label>
               <select
                 value={options.dither}
                 onChange={(e) => updateOption('dither', e.target.value)}
                 className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all cursor-pointer hover:bg-gray-700/70"
               >
-                <option value="none">无</option>
-                <option value="ordered">有序</option>
-                <option value="diffusion">扩散</option>
-                <option value="noise">噪声</option>
+                <option value="none">{t('options.dither.none')}</option>
+                <option value="ordered">{t('options.dither.ordered')}</option>
+                <option value="diffusion">{t('options.dither.diffusion')}</option>
+                <option value="noise">Noise</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
-                抖动算法可改善颜色过渡。扩散效果最好，但较慢
+                Dithering algorithm for better color simulation
               </p>
             </div>
 
             {/* Work Level */}
             <div>
-              <label className="block text-sm font-medium mb-2">
-                质量级别 (1-9)
+              <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                <Gauge className="w-4 h-4" />
+                {t('options.advanced.work.label')} (1-9)
               </label>
               <input
                 type="range"
@@ -454,36 +460,37 @@ function App() {
                 className="w-full"
               />
               <div className="flex justify-between text-xs text-gray-500">
-                <span>快速</span>
+                <span>Fast</span>
                 <span className="text-gray-300">{options.work}</span>
-                <span>最佳</span>
+                <span>Best</span>
               </div>
               <p className="text-xs text-gray-500 mt-1">
-                控制处理精度。数字越大质量越好，但转换速度越慢
+                Higher = better quality, slower conversion
               </p>
             </div>
 
             {/* Color Space */}
             <div>
-              <label className="block text-sm font-medium mb-2">
-                色彩空间
+              <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                <Palette className="w-4 h-4" />
+                {t('options.advanced.colorSpace.label')}
               </label>
               <select
                 value={options.colorSpace}
                 onChange={(e) => updateOption('colorSpace', e.target.value)}
                 className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all cursor-pointer hover:bg-gray-700/70"
               >
-                <option value="rgb">RGB（更快）</option>
-                <option value="din99d">DIN99d（更准确）</option>
+                <option value="rgb">{t('options.advanced.colorSpace.rgb')}</option>
+                <option value="din99d">{t('options.advanced.colorSpace.din99d')}</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
-                颜色计算方式。RGB速度快，DIN99d颜色感知更符合人眼
+                Color calculation method
               </p>
             </div>
 
             {/* Additional Options */}
             <div className="space-y-3">
-              <div className="text-sm font-medium mb-2">额外选项</div>
+              <div className="text-sm font-medium mb-2">{t('options.advanced.title')}</div>
               
               <label className="flex items-start gap-2 cursor-pointer group">
                 <input
@@ -493,8 +500,8 @@ function App() {
                   className="mt-0.5"
                 />
                 <div className="flex-1">
-                  <span className="text-sm">拉伸适配</span>
-                  <p className="text-xs text-gray-500 mt-0.5">忽略宽高比，拉伸图片以填满输出区域</p>
+                  <span className="text-sm">{t('options.advanced.stretch')}</span>
+                  <p className="text-xs text-gray-500 mt-0.5">Ignore aspect ratio</p>
                 </div>
               </label>
               
@@ -506,8 +513,8 @@ function App() {
                   className="mt-0.5"
                 />
                 <div className="flex-1">
-                  <span className="text-sm">反转颜色</span>
-                  <p className="text-xs text-gray-500 mt-0.5">交换前景色和背景色，适用于深色背景</p>
+                  <span className="text-sm">{t('options.advanced.invert')}</span>
+                  <p className="text-xs text-gray-500 mt-0.5">Swap foreground and background colors</p>
                 </div>
               </label>
               
@@ -519,8 +526,8 @@ function App() {
                   className="mt-0.5"
                 />
                 <div className="flex-1">
-                  <span className="text-sm">仅前景色</span>
-                  <p className="text-xs text-gray-500 mt-0.5">不设置背景色，使用透明背景</p>
+                  <span className="text-sm">{t('options.advanced.fgOnly')}</span>
+                  <p className="text-xs text-gray-500 mt-0.5">Use transparent background</p>
                 </div>
               </label>
               
@@ -532,8 +539,8 @@ function App() {
                   className="mt-0.5"
                 />
                 <div className="flex-1">
-                  <span className="text-sm">预处理</span>
-                  <p className="text-xs text-gray-500 mt-0.5">启用图像预处理以获得更好的输出质量</p>
+                  <span className="text-sm">{t('options.advanced.preprocess')}</span>
+                  <p className="text-xs text-gray-500 mt-0.5">Enable image preprocessing for better quality</p>
                 </div>
               </label>
             </div>
