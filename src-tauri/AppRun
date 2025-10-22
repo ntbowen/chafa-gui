@@ -4,14 +4,26 @@
 SELF=$(readlink -f "$0")
 HERE=${SELF%/*}
 
-# 设置环境变量以禁用 WebView 硬件加速
+# 检测会话类型
+SESSION_TYPE="${XDG_SESSION_TYPE:-x11}"
+
+# 通用设置：禁用硬件加速
 export WEBKIT_DISABLE_COMPOSITING_MODE=1
 export WEBKIT_DISABLE_DMABUF_RENDERER=1
-export GDK_BACKEND=x11
 export LIBGL_ALWAYS_SOFTWARE=1
-export WEBKIT_DISABLE_SANDBOX=1
 
-echo "🔧 AppImage: Applied compatibility settings before launch"
+# 根据会话类型设置
+if [ "$SESSION_TYPE" = "wayland" ]; then
+    echo "🔧 AppImage: Wayland session detected"
+    # Wayland 下不设置 GDK_BACKEND，使用原生 Wayland
+    export WEBKIT_DISABLE_SANDBOX=1
+else
+    echo "🔧 AppImage: X11 session detected"
+    # X11 下强制使用 X11 backend
+    export GDK_BACKEND=x11
+fi
+
+echo "🔧 AppImage: Applied compatibility settings (software rendering)"
 
 # 运行实际程序
 exec "${HERE}/usr/bin/chafa-gui" "$@"
