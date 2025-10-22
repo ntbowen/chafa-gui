@@ -1,9 +1,31 @@
-name: Build All Platforms
+# Chafa GUI - Build and Release Workflow
+# 
+# This workflow builds the application for all supported platforms:
+# - Linux x86-64 (RPM, DEB, AppImage)
+# - Windows x86-64 (ZIP)
+# - macOS Intel (DMG)
+# - macOS Apple Silicon (DMG)
+#
+# Triggers:
+# - Push to main/master branch: Build all platforms (artifacts only)
+# - Push tags (v*): Build all platforms and create GitHub Release
+# - Pull requests: Build all platforms for testing
+# - Manual: workflow_dispatch for on-demand builds
+#
+# Release Creation:
+# - Only happens when pushing a tag (e.g., v1.0.0)
+# - All build artifacts are automatically attached
+# - Detailed release notes are auto-generated
+
+name: Build and Release
 
 on:
   push:
+    branches: [ main, master ]
     tags:
       - 'v*'
+  pull_request:
+    branches: [ main, master ]
   workflow_dispatch:
 
 jobs:
