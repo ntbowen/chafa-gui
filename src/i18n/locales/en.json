@@ -13,48 +13,57 @@
   },
   "options": {
     "title": "Options",
+    "autoConvert": "Auto Convert",
+    "autoConvertHelp": "Auto convert on parameter change",
     "format": {
       "label": "Format",
-      "symbols": "Symbols (Text)",
+      "symbols": "Symbols (text)",
       "sixels": "Sixels",
       "kitty": "Kitty Graphics",
-      "iterm2": "iTerm2 Inline"
+      "iterm2": "iTerm2 Inline",
+      "help": "Select output format. Symbols use text characters, others are terminal graphics protocols"
     },
     "colors": {
       "label": "Colors",
-      "2": "2 Colors (Monochrome)",
-      "8": "8 Colors (ANSI)",
-      "16": "16 Colors (ANSI Extended)",
-      "256": "256 Colors",
-      "full": "Full Color (24-bit)"
+      "2": "2 colors (monochrome)",
+      "8": "8 colors (ANSI)",
+      "16": "16 colors (ANSI extended)",
+      "256": "256 colors",
+      "full": "Full color (24-bit)",
+      "help": "More colors = better quality, but larger output"
     },
     "size": {
       "label": "Size",
-      "placeholder": "e.g., 80x24"
+      "placeholder": "e.g.: 80x24",
+      "help": "Control output columns and rows. Format: widthxheight. Common: 80x24, 120x40"
     },
     "scale": {
       "label": "Scale",
-      "placeholder": "e.g., 1.0"
+      "placeholder": "e.g.: 1.0",
+      "help": "Image scale factor. \"max\" automatically fits to maximum size"
     },
     "symbols": {
       "label": "Symbol Set",
-      "all": "All Symbols",
-      "ascii": "ASCII Only",
-      "block": "Block Elements",
-      "border": "Border Elements",
-      "space": "Space Only"
+      "all": "All symbols",
+      "ascii": "ASCII only",
+      "block": "Block elements",
+      "border": "Border elements",
+      "space": "Space only",
+      "help": "Symbol set for image rendering"
     },
     "fill": {
       "label": "Fill Mode",
       "builtin": "Built-in",
       "solid": "Solid",
-      "stipple": "Stipple"
+      "stipple": "Stipple",
+      "help": "Fill mode for pixels"
     },
     "dither": {
-      "label": "Dither",
+      "label": "Dithering",
       "none": "None",
       "ordered": "Ordered",
-      "diffusion": "Diffusion"
+      "diffusion": "Diffusion",
+      "help": "Dithering algorithm for better color simulation"
     },
     "ditherIntensity": {
       "label": "Dither Intensity"
@@ -70,17 +79,25 @@
     "advanced": {
       "title": "Advanced Options",
       "fgOnly": "Foreground Only",
+      "fgOnlyHelp": "Use transparent background",
       "invert": "Invert Colors",
-      "stretch": "Stretch Image",
+      "invertHelp": "Swap foreground and background colors",
+      "stretch": "Stretch",
+      "stretchHelp": "Ignore aspect ratio",
       "preprocess": "Preprocess",
+      "preprocessHelp": "Enable image preprocessing for better quality",
       "work": {
         "label": "Work Factor",
-        "tooltip": "1-9, higher = better quality but slower"
+        "tooltip": "1-9, higher = better quality but slower",
+        "help": "Higher = better quality, slower conversion",
+        "fast": "Fast",
+        "best": "Best"
       },
       "colorSpace": {
         "label": "Color Space",
         "rgb": "RGB",
-        "din99d": "DIN99d"
+        "din99d": "DIN99d",
+        "help": "Color calculation method. RGB is faster, DIN99d is more accurate"
       },
       "colorExtractor": {
         "label": "Color Extractor",

@@ -13,12 +13,15 @@
   },
   "options": {
     "title": "选项",
+    "autoConvert": "自动转换",
+    "autoConvertHelp": "参数变化时自动重新转换图片",
     "format": {
       "label": "格式",
       "symbols": "符号（文本）",
       "sixels": "Sixels",
-      "kitty": "Kitty 图形",
-      "iterm2": "iTerm2 内联"
+      "kitty": "Kitty Graphics",
+      "iterm2": "iTerm2 Inline",
+      "help": "选择输出格式。符号使用文字字符，其他为终端图形协议"
     },
     "colors": {
       "label": "颜色",
@@ -26,15 +29,18 @@
       "8": "8 色（ANSI）",
       "16": "16 色（ANSI 扩展）",
       "256": "256 色",
-      "full": "全彩（24位）"
+      "full": "全彩（24位）",
+      "help": "颜色越多效果越好，但输出文件也越大"
     },
     "size": {
       "label": "尺寸",
-      "placeholder": "例如：80x24"
+      "placeholder": "例如：80x24",
+      "help": "控制输出的列数和行数。格式: 宽x高。常用: 80x24, 120x40"
     },
     "scale": {
       "label": "缩放",
-      "placeholder": "例如：1.0"
+      "placeholder": "例如：1.0",
+      "help": "图片缩放倍数。\"max\"自动适配最大尺寸"
     },
     "symbols": {
       "label": "符号集",
@@ -42,19 +48,22 @@
       "ascii": "仅 ASCII",
       "block": "块元素",
       "border": "边框元素",
-      "space": "仅空格"
+      "space": "仅空格",
+      "help": "选择用于构建图像的符号集"
     },
     "fill": {
       "label": "填充模式",
       "builtin": "内置",
       "solid": "实心",
-      "stipple": "点状"
+      "stipple": "点状",
+      "help": "像素填充方式"
     },
     "dither": {
       "label": "抖动",
       "none": "无",
       "ordered": "有序",
-      "diffusion": "扩散"
+      "diffusion": "扩散",
+      "help": "抖动算法可改善颜色过渡效果"
     },
     "ditherIntensity": {
       "label": "抖动强度"
@@ -70,17 +79,25 @@
     "advanced": {
       "title": "高级选项",
       "fgOnly": "仅前景",
+      "fgOnlyHelp": "不设置背景色，使用透明背景",
       "invert": "反转颜色",
+      "invertHelp": "交换前景色和背景色",
       "stretch": "拉伸图片",
+      "stretchHelp": "忽略宽高比，拉伸图片以填满输出区域",
       "preprocess": "预处理",
+      "preprocessHelp": "启用图像预处理以获得更好的输出质量",
       "work": {
         "label": "工作因子",
-        "tooltip": "1-9，越高质量越好但速度越慢"
+        "tooltip": "1-9，越高质量越好但速度越慢",
+        "help": "数字越大质量越好，但转换速度越慢",
+        "fast": "快速",
+        "best": "最佳"
       },
       "colorSpace": {
         "label": "色彩空间",
         "rgb": "RGB",
-        "din99d": "DIN99d"
+        "din99d": "DIN99d",
+        "help": "颜色计算方式。RGB速度快，DIN99d更准确"
       },
       "colorExtractor": {
         "label": "颜色提取器",

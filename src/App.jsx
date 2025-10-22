@@ -285,9 +285,9 @@ function App() {
                 className="mt-0.5"
               />
               <div className="flex-1">
-                <span className="text-sm font-medium">{t('options.advanced.title')}</span>
+                <span className="text-sm font-medium">{t('options.autoConvert')}</span>
                 <p className="text-xs text-gray-500 mt-0.5">
-                  Auto convert on parameter change
+                  {t('options.autoConvertHelp')}
                 </p>
               </div>
             </label>
@@ -312,7 +312,7 @@ function App() {
                 <option value="iterm">{t('options.format.iterm2')}</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
-                Select output format
+                {t('options.format.help')}
               </p>
             </div>
 
@@ -336,7 +336,7 @@ function App() {
                 <option value="full">{t('options.colors.full')}</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
-                More colors = better quality
+                {t('options.colors.help')}
               </p>
             </div>
 
@@ -354,7 +354,7 @@ function App() {
                 className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all hover:bg-gray-700/70 placeholder-gray-500"
               />
               <p className="text-xs text-gray-500 mt-1">
-                {t('options.size.placeholder')}
+                {t('options.size.help')}
               </p>
             </div>
 
@@ -372,7 +372,7 @@ function App() {
                 className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all hover:bg-gray-700/70 placeholder-gray-500"
               />
               <p className="text-xs text-gray-500 mt-1">
-                {t('options.scale.placeholder')}
+                {t('options.scale.help')}
               </p>
             </div>
 
@@ -398,7 +398,7 @@ function App() {
                     <option value="space">{t('options.symbols.space')}</option>
                   </select>
                   <p className="text-xs text-gray-500 mt-1">
-                    Symbol set for image rendering
+                    {t('options.symbols.help')}
                   </p>
                 </div>
 
@@ -418,7 +418,7 @@ function App() {
                     <option value="braille">Braille</option>
                   </select>
                   <p className="text-xs text-gray-500 mt-1">
-                    Fill mode for pixels
+                    {t('options.fill.help')}
                   </p>
                 </div>
               </>
@@ -441,7 +441,7 @@ function App() {
                 <option value="noise">Noise</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
-                Dithering algorithm for better color simulation
+                {t('options.dither.help')}
               </p>
             </div>
 
@@ -460,12 +460,12 @@ function App() {
                 className="w-full"
               />
               <div className="flex justify-between text-xs text-gray-500">
-                <span>Fast</span>
+                <span>{t('options.advanced.work.fast')}</span>
                 <span className="text-gray-300">{options.work}</span>
-                <span>Best</span>
+                <span>{t('options.advanced.work.best')}</span>
               </div>
               <p className="text-xs text-gray-500 mt-1">
-                Higher = better quality, slower conversion
+                {t('options.advanced.work.help')}
               </p>
             </div>
 
@@ -484,7 +484,7 @@ function App() {
                 <option value="din99d">{t('options.advanced.colorSpace.din99d')}</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
-                Color calculation method
+                {t('options.advanced.colorSpace.help')}
               </p>
             </div>
 
@@ -501,7 +501,7 @@ function App() {
                 />
                 <div className="flex-1">
                   <span className="text-sm">{t('options.advanced.stretch')}</span>
-                  <p className="text-xs text-gray-500 mt-0.5">Ignore aspect ratio</p>
+                  <p className="text-xs text-gray-500 mt-0.5">{t('options.advanced.stretchHelp')}</p>
                 </div>
               </label>
               
@@ -514,7 +514,7 @@ function App() {
                 />
                 <div className="flex-1">
                   <span className="text-sm">{t('options.advanced.invert')}</span>
-                  <p className="text-xs text-gray-500 mt-0.5">Swap foreground and background colors</p>
+                  <p className="text-xs text-gray-500 mt-0.5">{t('options.advanced.invertHelp')}</p>
                 </div>
               </label>
               
@@ -527,7 +527,7 @@ function App() {
                 />
                 <div className="flex-1">
                   <span className="text-sm">{t('options.advanced.fgOnly')}</span>
-                  <p className="text-xs text-gray-500 mt-0.5">Use transparent background</p>
+                  <p className="text-xs text-gray-500 mt-0.5">{t('options.advanced.fgOnlyHelp')}</p>
                 </div>
               </label>
               
@@ -540,7 +540,7 @@ function App() {
                 />
                 <div className="flex-1">
                   <span className="text-sm">{t('options.advanced.preprocess')}</span>
-                  <p className="text-xs text-gray-500 mt-0.5">Enable image preprocessing for better quality</p>
+                  <p className="text-xs text-gray-500 mt-0.5">{t('options.advanced.preprocessHelp')}</p>
                 </div>
               </label>
             </div>
