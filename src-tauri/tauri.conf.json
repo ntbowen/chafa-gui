@@ -48,7 +48,7 @@
       "appimage": {
         "bundleMediaFramework": true,
         "files": {
-          "../AppRun": "AppRun"
+          "AppRun": "AppRun"
         }
       }
     },
