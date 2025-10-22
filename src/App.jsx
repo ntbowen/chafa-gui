@@ -120,7 +120,7 @@ function App() {
   const handleDrop = (e) => {
     e.preventDefault();
     // Tauri不支持拖放，显示提示
-    setError('请点击选择图片');
+    setError(t('controls.selectImage'));
   };
 
   const handleDragOver = (e) => {
@@ -255,7 +255,7 @@ function App() {
           <div className="mb-6">
             <label className="block text-sm font-medium mb-2 flex items-center gap-2">
               <Upload className="w-4 h-4" />
-              上传图片
+              {t('controls.selectImage')}
             </label>
             <div
               onClick={handleFileSelect}
@@ -268,8 +268,8 @@ function App() {
                 <div className="inline-flex p-3 bg-gray-700/50 rounded-full mb-3 group-hover:scale-110 transition-transform duration-300">
                   <FileImage className="w-8 h-8 text-gray-400 group-hover:text-blue-400 transition-colors" />
                 </div>
-                <p className="text-sm text-gray-300 font-medium mb-1">点击选择图片</p>
-                <p className="text-xs text-gray-500">支持: JPG, PNG, GIF, WebP, SVG 等</p>
+                <p className="text-sm text-gray-300 font-medium mb-1">{t('controls.selectImage')}</p>
+                <p className="text-xs text-gray-500">JPG, PNG, GIF, WebP, SVG</p>
               </div>
             </div>
           </div>
@@ -284,9 +284,9 @@ function App() {
                 className="mt-0.5"
               />
               <div className="flex-1">
-                <span className="text-sm font-medium">自动转换</span>
+                <span className="text-sm font-medium">{t('options.advanced.title')}</span>
                 <p className="text-xs text-gray-500 mt-0.5">
-                  参数变化时自动重新转换图片。关闭后需手动点击转换按钮
+                  Auto convert on parameter change
                 </p>
               </div>
             </label>
@@ -298,20 +298,20 @@ function App() {
             <div>
               <label className="block text-sm font-medium mb-2 flex items-center gap-2">
                 <Grid3x3 className="w-4 h-4" />
-                输出格式
+                {t('options.format.label')}
               </label>
               <select
                 value={options.format}
                 onChange={(e) => updateOption('format', e.target.value)}
                 className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all cursor-pointer hover:bg-gray-700/70"
               >
-                <option value="symbols">符号字符（字符艺术）</option>
-                <option value="sixels">Sixels</option>
-                <option value="kitty">Kitty</option>
-                <option value="iterm">iTerm2</option>
+                <option value="symbols">{t('options.format.symbols')}</option>
+                <option value="sixels">{t('options.format.sixels')}</option>
+                <option value="kitty">{t('options.format.kitty')}</option>
+                <option value="iterm">{t('options.format.iterm2')}</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
-                选择输出类型。symbols使用文字符号，其他为终端图形协议
+                Select output format
               </p>
             </div>
 
@@ -319,30 +319,30 @@ function App() {
             <div>
               <label className="block text-sm font-medium mb-2 flex items-center gap-2">
                 <Palette className="w-4 h-4" />
-                颜色模式
+                {t('options.colors.label')}
               </label>
               <select
                 value={options.colors}
                 onChange={(e) => updateOption('colors', e.target.value)}
                 className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all cursor-pointer hover:bg-gray-700/70"
               >
-                <option value="none">无（单色）</option>
-                <option value="2">2色</option>
-                <option value="8">8色</option>
-                <option value="16">16色</option>
-                <option value="240">240色</option>
-                <option value="256">256色</option>
-                <option value="full">全彩色（24位）</option>
+                <option value="none">{t('options.colors.2')}</option>
+                <option value="2">2 {t('options.colors.label')}</option>
+                <option value="8">{t('options.colors.8')}</option>
+                <option value="16">{t('options.colors.16')}</option>
+                <option value="240">240</option>
+                <option value="256">{t('options.colors.256')}</option>
+                <option value="full">{t('options.colors.full')}</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
-                颜色越多效果越好，但输出文件也越大。全彩色可显示1600万色
+                More colors = better quality
               </p>
             </div>
 
             {/* Size */}
             <div>
               <label className="block text-sm font-medium mb-2">
-                尺寸（列 x 行）
+                {t('options.size.label')}
               </label>
               <input
                 type="text"
@@ -623,8 +623,8 @@ function App() {
                 <div className="inline-flex p-6 bg-gray-800/50 rounded-full mb-4">
                   <ImageIcon className="w-16 h-16 opacity-50" />
                 </div>
-                <p className="text-lg font-medium mb-2">未选择图片</p>
-                <p className="text-sm text-gray-600">上传图片开始使用</p>
+                <p className="text-lg font-medium mb-2">{t('controls.noImage')}</p>
+                <p className="text-sm text-gray-600">{t('preview.noImage')}</p>
               </div>
             </div>
           ) : (
@@ -633,7 +633,7 @@ function App() {
               <div>
                 <h3 className="text-sm font-medium text-gray-300 mb-3 flex items-center gap-2">
                   <div className="w-1 h-4 bg-blue-500 rounded-full"></div>
-                  原始图片
+                  Original Image
                 </h3>
                 <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 inline-block border border-gray-700/50 shadow-xl">
                   <img src={imagePreview} alt="Preview" className="max-w-md max-h-64 rounded-lg shadow-lg" />
@@ -645,7 +645,7 @@ function App() {
                 <div className="animate-[slideIn_0.5s_ease-in-out]">
                   <h3 className="text-sm font-medium text-gray-300 mb-3 flex items-center gap-2">
                     <div className="w-1 h-4 bg-green-500 rounded-full"></div>
-                    ANSI 输出
+                    {t('preview.title')}
                   </h3>
                   <AnsiRenderer content={ansiOutput} />
                 </div>

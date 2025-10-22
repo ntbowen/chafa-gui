@@ -1,0 +1,137 @@
+{
+  "app": {
+    "title": "Chafa GUI",
+    "description": "Конвертер изображений в ANSI-арт"
+  },
+  "header": {
+    "title": "Chafa GUI - Изображение в ANSI-арт"
+  },
+  "controls": {
+    "selectImage": "Выбрать изображение",
+    "saveOutput": "Сохранить результат",
+    "noImage": "Изображение не выбрано"
+  },
+  "options": {
+    "title": "Опции",
+    "format": {
+      "label": "Формат",
+      "symbols": "Символы (текст)",
+      "sixels": "Sixels",
+      "kitty": "Kitty Graphics",
+      "iterm2": "iTerm2 Inline"
+    },
+    "colors": {
+      "label": "Цвета",
+      "2": "2 цвета (монохром)",
+      "8": "8 цветов (ANSI)",
+      "16": "16 цветов (ANSI расширенный)",
+      "256": "256 цветов",
+      "full": "Полноцветный (24-бит)"
+    },
+    "size": {
+      "label": "Размер",
+      "placeholder": "напр.: 80x24"
+    },
+    "scale": {
+      "label": "Масштаб",
+      "placeholder": "напр.: 1.0"
+    },
+    "symbols": {
+      "label": "Набор символов",
+      "all": "Все символы",
+      "ascii": "Только ASCII",
+      "block": "Блочные элементы",
+      "border": "Граничные элементы",
+      "space": "Только пробелы"
+    },
+    "fill": {
+      "label": "Режим заполнения",
+      "builtin": "Встроенный",
+      "solid": "Сплошной",
+      "stipple": "Пунктир"
+    },
+    "dither": {
+      "label": "Дизеринг",
+      "none": "Нет",
+      "ordered": "Упорядоченный",
+      "diffusion": "Диффузия"
+    },
+    "ditherIntensity": {
+      "label": "Интенсивность дизеринга"
+    },
+    "background": {
+      "label": "Цвет фона",
+      "placeholder": "#000000"
+    },
+    "foreground": {
+      "label": "Цвет переднего плана",
+      "placeholder": "#ffffff"
+    },
+    "advanced": {
+      "title": "Дополнительные опции",
+      "fgOnly": "Только передний план",
+      "invert": "Инвертировать цвета",
+      "stretch": "Растянуть изображение",
+      "preprocess": "Предобработка",
+      "work": {
+        "label": "Рабочий коэффициент",
+        "tooltip": "1-9, выше = лучше качество, но медленнее"
+      },
+      "colorSpace": {
+        "label": "Цветовое пространство",
+        "rgb": "RGB",
+        "din99d": "DIN99d"
+      },
+      "colorExtractor": {
+        "label": "Экстрактор цвета",
+        "average": "Средний",
+        "median": "Медиана"
+      }
+    }
+  },
+  "preview": {
+    "title": "Предварительный просмотр",
+    "loading": "Конвертация...",
+    "error": "Ошибка конвертации",
+    "noImage": "Нет изображения для просмотра",
+    "chafaNotFound": "Chafa не установлен"
+  },
+  "status": {
+    "ready": "Готов",
+    "converting": "Конвертация...",
+    "success": "Конвертация успешна",
+    "error": "Ошибка: {{message}}",
+    "saved": "Сохранено в {{path}}"
+  },
+  "errors": {
+    "chafaNotFound": "Chafa не установлен. Пожалуйста, установите:\n\nmacOS: brew install chafa\nLinux: sudo apt install chafa (или sudo dnf install chafa)\nWindows: Скачайте с https://hpjansson.org/chafa/download/",
+    "imageLoadFailed": "Не удалось загрузить изображение",
+    "conversionFailed": "Ошибка конвертации: {{error}}",
+    "saveFailed": "Не удалось сохранить файл: {{error}}"
+  },
+  "dialogs": {
+    "selectImage": {
+      "title": "Выберите изображение",
+      "filters": {
+        "images": "Файлы изображений"
+      }
+    },
+    "saveOutput": {
+      "title": "Сохранить результат",
+      "defaultName": "output.txt"
+    }
+  },
+  "settings": {
+    "language": "Язык",
+    "theme": "Тема",
+    "auto": "Авто",
+    "light": "Светлая",
+    "dark": "Тёмная"
+  },
+  "about": {
+    "version": "Версия {{version}}",
+    "builtWith": "Создано с Tauri, React и Chafa",
+    "license": "Лицензия MIT",
+    "repository": "GitHub репозиторий"
+  }
+}

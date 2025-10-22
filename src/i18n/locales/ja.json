@@ -1,0 +1,137 @@
+{
+  "app": {
+    "title": "Chafa GUI",
+    "description": "画像から ANSI アートへのコンバーター"
+  },
+  "header": {
+    "title": "Chafa GUI - 画像から ANSI アート"
+  },
+  "controls": {
+    "selectImage": "画像を選択",
+    "saveOutput": "出力を保存",
+    "noImage": "画像が選択されていません"
+  },
+  "options": {
+    "title": "オプション",
+    "format": {
+      "label": "フォーマット",
+      "symbols": "シンボル（テキスト）",
+      "sixels": "Sixels",
+      "kitty": "Kitty グラフィックス",
+      "iterm2": "iTerm2 インライン"
+    },
+    "colors": {
+      "label": "色",
+      "2": "2色（モノクロ）",
+      "8": "8色（ANSI）",
+      "16": "16色（ANSI拡張）",
+      "256": "256色",
+      "full": "フルカラー（24ビット）"
+    },
+    "size": {
+      "label": "サイズ",
+      "placeholder": "例：80x24"
+    },
+    "scale": {
+      "label": "スケール",
+      "placeholder": "例：1.0"
+    },
+    "symbols": {
+      "label": "シンボルセット",
+      "all": "すべてのシンボル",
+      "ascii": "ASCII のみ",
+      "block": "ブロック要素",
+      "border": "ボーダー要素",
+      "space": "スペースのみ"
+    },
+    "fill": {
+      "label": "塗りつぶしモード",
+      "builtin": "ビルトイン",
+      "solid": "ソリッド",
+      "stipple": "スティップル"
+    },
+    "dither": {
+      "label": "ディザリング",
+      "none": "なし",
+      "ordered": "順序付き",
+      "diffusion": "拡散"
+    },
+    "ditherIntensity": {
+      "label": "ディザリング強度"
+    },
+    "background": {
+      "label": "背景色",
+      "placeholder": "#000000"
+    },
+    "foreground": {
+      "label": "前景色",
+      "placeholder": "#ffffff"
+    },
+    "advanced": {
+      "title": "詳細オプション",
+      "fgOnly": "前景のみ",
+      "invert": "色を反転",
+      "stretch": "画像を伸縮",
+      "preprocess": "前処理",
+      "work": {
+        "label": "作業係数",
+        "tooltip": "1-9、高いほど品質が良いが遅い"
+      },
+      "colorSpace": {
+        "label": "色空間",
+        "rgb": "RGB",
+        "din99d": "DIN99d"
+      },
+      "colorExtractor": {
+        "label": "カラー抽出",
+        "average": "平均",
+        "median": "中央値"
+      }
+    }
+  },
+  "preview": {
+    "title": "プレビュー",
+    "loading": "変換中...",
+    "error": "変換に失敗しました",
+    "noImage": "プレビューする画像がありません",
+    "chafaNotFound": "Chafa がインストールされていません"
+  },
+  "status": {
+    "ready": "準備完了",
+    "converting": "変換中...",
+    "success": "変換成功",
+    "error": "エラー：{{message}}",
+    "saved": "{{path}} に保存されました"
+  },
+  "errors": {
+    "chafaNotFound": "Chafa がインストールされていません。インストールしてください：\n\nmacOS: brew install chafa\nLinux: sudo apt install chafa（または sudo dnf install chafa）\nWindows: https://hpjansson.org/chafa/download/ からダウンロード",
+    "imageLoadFailed": "画像の読み込みに失敗しました",
+    "conversionFailed": "変換に失敗しました：{{error}}",
+    "saveFailed": "ファイルの保存に失敗しました：{{error}}"
+  },
+  "dialogs": {
+    "selectImage": {
+      "title": "画像を選択",
+      "filters": {
+        "images": "画像ファイル"
+      }
+    },
+    "saveOutput": {
+      "title": "出力を保存",
+      "defaultName": "output.txt"
+    }
+  },
+  "settings": {
+    "language": "言語",
+    "theme": "テーマ",
+    "auto": "自動",
+    "light": "ライト",
+    "dark": "ダーク"
+  },
+  "about": {
+    "version": "バージョン {{version}}",
+    "builtWith": "Tauri、React、Chafa で構築",
+    "license": "MIT ライセンス",
+    "repository": "GitHub リポジトリ"
+  }
+}

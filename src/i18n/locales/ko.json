@@ -1,0 +1,137 @@
+{
+  "app": {
+    "title": "Chafa GUI",
+    "description": "이미지를 ANSI 아트로 변환"
+  },
+  "header": {
+    "title": "Chafa GUI - 이미지를 ANSI 아트로"
+  },
+  "controls": {
+    "selectImage": "이미지 선택",
+    "saveOutput": "출력 저장",
+    "noImage": "선택된 이미지 없음"
+  },
+  "options": {
+    "title": "옵션",
+    "format": {
+      "label": "형식",
+      "symbols": "기호 (텍스트)",
+      "sixels": "Sixels",
+      "kitty": "Kitty 그래픽",
+      "iterm2": "iTerm2 인라인"
+    },
+    "colors": {
+      "label": "색상",
+      "2": "2색 (흑백)",
+      "8": "8색 (ANSI)",
+      "16": "16색 (ANSI 확장)",
+      "256": "256색",
+      "full": "풀컬러 (24비트)"
+    },
+    "size": {
+      "label": "크기",
+      "placeholder": "예: 80x24"
+    },
+    "scale": {
+      "label": "배율",
+      "placeholder": "예: 1.0"
+    },
+    "symbols": {
+      "label": "기호 세트",
+      "all": "모든 기호",
+      "ascii": "ASCII만",
+      "block": "블록 요소",
+      "border": "테두리 요소",
+      "space": "공백만"
+    },
+    "fill": {
+      "label": "채우기 모드",
+      "builtin": "내장",
+      "solid": "솔리드",
+      "stipple": "점묘"
+    },
+    "dither": {
+      "label": "디더링",
+      "none": "없음",
+      "ordered": "정렬",
+      "diffusion": "확산"
+    },
+    "ditherIntensity": {
+      "label": "디더링 강도"
+    },
+    "background": {
+      "label": "배경색",
+      "placeholder": "#000000"
+    },
+    "foreground": {
+      "label": "전경색",
+      "placeholder": "#ffffff"
+    },
+    "advanced": {
+      "title": "고급 옵션",
+      "fgOnly": "전경만",
+      "invert": "색상 반전",
+      "stretch": "이미지 늘이기",
+      "preprocess": "전처리",
+      "work": {
+        "label": "작업 계수",
+        "tooltip": "1-9, 높을수록 품질이 좋지만 느림"
+      },
+      "colorSpace": {
+        "label": "색 공간",
+        "rgb": "RGB",
+        "din99d": "DIN99d"
+      },
+      "colorExtractor": {
+        "label": "색상 추출기",
+        "average": "평균",
+        "median": "중앙값"
+      }
+    }
+  },
+  "preview": {
+    "title": "미리보기",
+    "loading": "변환 중...",
+    "error": "변환 실패",
+    "noImage": "미리볼 이미지 없음",
+    "chafaNotFound": "Chafa가 설치되지 않음"
+  },
+  "status": {
+    "ready": "준비됨",
+    "converting": "변환 중...",
+    "success": "변환 성공",
+    "error": "오류: {{message}}",
+    "saved": "{{path}}에 저장됨"
+  },
+  "errors": {
+    "chafaNotFound": "Chafa가 설치되지 않았습니다. 설치하세요:\n\nmacOS: brew install chafa\nLinux: sudo apt install chafa (또는 sudo dnf install chafa)\nWindows: https://hpjansson.org/chafa/download/ 에서 다운로드",
+    "imageLoadFailed": "이미지 로드 실패",
+    "conversionFailed": "변환 실패: {{error}}",
+    "saveFailed": "파일 저장 실패: {{error}}"
+  },
+  "dialogs": {
+    "selectImage": {
+      "title": "이미지 선택",
+      "filters": {
+        "images": "이미지 파일"
+      }
+    },
+    "saveOutput": {
+      "title": "출력 저장",
+      "defaultName": "output.txt"
+    }
+  },
+  "settings": {
+    "language": "언어",
+    "theme": "테마",
+    "auto": "자동",
+    "light": "라이트",
+    "dark": "다크"
+  },
+  "about": {
+    "version": "버전 {{version}}",
+    "builtWith": "Tauri, React, Chafa로 제작",
+    "license": "MIT 라이선스",
+    "repository": "GitHub 저장소"
+  }
+}
