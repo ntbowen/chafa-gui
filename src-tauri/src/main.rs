@@ -243,13 +243,19 @@ fn get_system_info() -> String {
 }
 
 fn main() {
-    // 设置环境变量以禁用硬件加速 - 修复AppImage空白问题
+    // 仅在AppImage环境中禁用硬件加速 - 修复AppImage空白问题
+    // RPM/DEB包使用系统WebKit库，不需要此修复
     #[cfg(target_os = "linux")]
     {
-        std::env::set_var("WEBKIT_DISABLE_COMPOSITING_MODE", "1");
-        std::env::set_var("WEBKIT_DISABLE_DMABUF_RENDERER", "1");
-        std::env::set_var("GDK_BACKEND", "x11");
-        println!("🔧 Disabled hardware acceleration for better compatibility");
+        // 检测是否在AppImage中运行
+        if std::env::var("APPIMAGE").is_ok() || std::env::var("APPDIR").is_ok() {
+            std::env::set_var("WEBKIT_DISABLE_COMPOSITING_MODE", "1");
+            std::env::set_var("WEBKIT_DISABLE_DMABUF_RENDERER", "1");
+            std::env::set_var("GDK_BACKEND", "x11");
+            println!("🔧 AppImage detected: Disabled hardware acceleration for compatibility");
+        } else {
+            println!("✅ Using system WebKit libraries (RPM/DEB package)");
+        }
     }
     
     tauri::Builder::default()
