@@ -55,17 +55,6 @@ sudo dpkg -i Chafa-GUI_*.deb
 - Better system integration
 - ✅ Verified on Fedora 43 + GNOME Wayland
 
-#### 🟡 AppImage (有兼容性限制)
-
-```bash
-chmod +x Chafa-GUI_*.AppImage
-./Chafa-GUI_*.AppImage
-```
-
-**⚠️ Known Issue:** AppImage may show blank window on Wayland sessions (Fedora 43, etc). 
-- **Workaround**: Use X11 session or native packages (RPM/DEB)
-- **Details**: See [APPIMAGE_KNOWN_ISSUES.md](APPIMAGE_KNOWN_ISSUES.md)
-
 ---
 
 ## 📊 Why Tauri?

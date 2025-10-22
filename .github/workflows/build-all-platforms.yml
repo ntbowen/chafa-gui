@@ -1,7 +1,7 @@
 # Chafa GUI - Build and Release Workflow
 # 
 # This workflow builds the application for all supported platforms:
-# - Linux x86-64 (RPM, DEB, AppImage)
+# - Linux x86-64 (RPM, DEB)
 # - Windows x86-64 (ZIP)
 # - macOS Intel (DMG)
 # - macOS Apple Silicon (DMG)
@@ -81,12 +81,6 @@ jobs:
           name: linux-rpm
           path: src-tauri/target/release/bundle/rpm/*.rpm
 
-      - name: Upload AppImage
-        uses: actions/upload-artifact@v4
-        with:
-          name: linux-appimage
-          path: src-tauri/target/release/bundle/appimage/*.AppImage
-          if-no-files-found: warn
 
   build-windows:
     runs-on: ubuntu-latest
@@ -240,7 +234,6 @@ jobs:
           # Linux files
           find artifacts/linux-deb -name "*.deb" -exec cp {} release/ \;
           find artifacts/linux-rpm -name "*.rpm" -exec cp {} release/ \;
-          find artifacts/linux-appimage -name "*.AppImage" -exec cp {} release/ \; || true
           
           # Windows files
           find artifacts/windows-x64 -name "*.zip" -exec cp {} release/ \;
@@ -262,9 +255,8 @@ jobs:
           ## 🎯 Supported Platforms
           
           ### Linux x86-64
-          - **RPM Package** - For Fedora/RHEL/CentOS
-          - **DEB Package** - For Debian/Ubuntu
-          - **AppImage** - Universal Linux package
+          - **RPM Package** (Recommended) - For Fedora/RHEL/CentOS
+          - **DEB Package** (Recommended) - For Debian/Ubuntu
           
           ### Windows x86-64
           - **ZIP Package** - Extract and run
@@ -288,12 +280,6 @@ jobs:
           \`\`\`bash
           sudo dpkg -i chafa-gui_*.deb
           chafa-gui
-          \`\`\`
-          
-          ### Linux (AppImage)
-          \`\`\`bash
-          chmod +x Chafa-GUI-*.AppImage
-          ./Chafa-GUI-*.AppImage
           \`\`\`
           
           ### Windows
