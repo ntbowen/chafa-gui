@@ -122,12 +122,6 @@ npm run tauri:dev
 ```bash
 # Build all formats
 npm run tauri:build
-
-# Manually build AppImage
-./build-appimage.sh
-
-# Test all builds
-./test-all-builds.sh
 ```
 
 ---
@@ -138,7 +132,6 @@ npm run tauri:build
 
 - **RPM** (3.4MB) - Fedora/RHEL/CentOS
 - **DEB** (3.4MB) - Debian/Ubuntu
-- **AppImage** (3.5MB) - Universal Linux
 - **Binary** (11MB) - Standalone executable
 
 ### Installation
@@ -151,12 +144,6 @@ sudo rpm -ivh "Chafa GUI-1.0.0-1.x86_64.rpm"
 **Debian/Ubuntu:**
 ```bash
 sudo dpkg -i "Chafa GUI_1.0.0_amd64.deb"
-```
-
-**AppImage:**
-```bash
-chmod +x Chafa-GUI-1.0.0-x86_64.AppImage
-./Chafa-GUI-1.0.0-x86_64.AppImage
 ```
 
 ---
@@ -182,8 +169,7 @@ chafa-gui/
 │   ├── Cargo.toml        # Rust dependencies
 │   └── tauri.conf.json   # Tauri configuration
 ├── dist/                  # Frontend build output
-├── package.json           # Pure Tauri configuration
-└── build-appimage.sh      # AppImage build script
+└── package.json           # Pure Tauri configuration
 ```
 
 ---
