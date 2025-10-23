@@ -9,7 +9,11 @@
   "controls": {
     "selectImage": "画像を選択",
     "saveOutput": "出力を保存",
-    "noImage": "画像が選択されていません"
+    "noImage": "画像が選択されていません",
+    "copy": "コピー",
+    "save": "保存",
+    "convert": "画像を変換",
+    "converting": "変換中..."
   },
   "options": {
     "title": "オプション",
@@ -43,27 +47,33 @@
       "help": "画像の拡大縮小倍率。\"max\"で自動的に最大サイズに合わせます"
     },
     "symbols": {
-      "label": "シンボルセット",
-      "all": "すべてのシンボル",
-      "ascii": "ASCII のみ",
+      "label": "記号セット",
+      "all": "すべての記号",
+      "ascii": "ASCIIのみ",
       "block": "ブロック要素",
-      "border": "ボーダー要素",
+      "braille": "点字",
+      "half": "半角ブロック",
+      "solid": "実線",
+      "border": "枠線要素",
       "space": "スペースのみ",
-      "help": "画像レンダリングに使用するシンボルセット"
+      "help": "画像レンダリングの記号セット"
     },
     "fill": {
       "label": "塗りつぶしモード",
-      "builtin": "ビルトイン",
-      "solid": "ソリッド",
-      "stipple": "スティップル",
+      "builtin": "組み込み",
+      "block": "ブロック",
+      "solid": "実線",
+      "stipple": "点描",
+      "braille": "点字",
       "help": "ピクセルの塗りつぶし方法"
     },
     "dither": {
       "label": "ディザリング",
       "none": "なし",
-      "ordered": "順序付き",
-      "diffusion": "拡散",
-      "help": "色のグラデーションを改善するディザリングアルゴリズム"
+      "ordered": "順序ディザリング",
+      "diffusion": "誤差拡散",
+      "noise": "ノイズ",
+      "help": "より良い色シミュレーションのためのディザリングアルゴリズム"
     },
     "ditherIntensity": {
       "label": "ディザリング強度"
@@ -119,7 +129,8 @@
     "converting": "変換中...",
     "success": "変換成功",
     "error": "エラー：{{message}}",
-    "saved": "{{path}} に保存されました"
+    "saved": "{{path}} に保存されました",
+    "copied": "クリップボードにコピーされました！"
   },
   "errors": {
     "chafaNotFound": "Chafa がインストールされていません。インストールしてください：\n\nmacOS: brew install chafa\nLinux: sudo apt install chafa（または sudo dnf install chafa）\nWindows: https://hpjansson.org/chafa/download/ からダウンロード",

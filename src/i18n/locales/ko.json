@@ -9,7 +9,11 @@
   "controls": {
     "selectImage": "이미지 선택",
     "saveOutput": "출력 저장",
-    "noImage": "선택된 이미지 없음"
+    "noImage": "이미지가 선택되지 않았습니다",
+    "copy": "복사",
+    "save": "저장",
+    "convert": "이미지 변환",
+    "converting": "변환 중..."
   },
   "options": {
     "title": "옵션",
@@ -47,23 +51,29 @@
       "all": "모든 기호",
       "ascii": "ASCII만",
       "block": "블록 요소",
+      "braille": "점자",
+      "half": "반 블록",
+      "solid": "실선",
       "border": "테두리 요소",
       "space": "공백만",
-      "help": "이미지 렌더링에 사용할 기호 세트"
+      "help": "이미지 렌더링을 위한 기호 세트"
     },
     "fill": {
       "label": "채우기 모드",
       "builtin": "기본 제공",
-      "solid": "솔리드",
+      "block": "블록",
+      "solid": "실선",
       "stipple": "점묘",
+      "braille": "점자",
       "help": "픽셀 채우기 방법"
     },
     "dither": {
       "label": "디더링",
       "none": "없음",
-      "ordered": "정렬됨",
-      "diffusion": "확산",
-      "help": "색상 그라데이션을 개선하는 디더링 알고리즘"
+      "ordered": "정렬 디더링",
+      "diffusion": "오차 확산",
+      "noise": "노이즈",
+      "help": "더 나은 색상 시뮬레이션을 위한 디더링 알고리즘"
     },
     "ditherIntensity": {
       "label": "디더링 강도"
@@ -119,7 +129,8 @@
     "converting": "변환 중...",
     "success": "변환 성공",
     "error": "오류: {{message}}",
-    "saved": "{{path}}에 저장됨"
+    "saved": "{{path}}에 저장됨",
+    "copied": "클립보드에 복사되었습니다!"
   },
   "errors": {
     "chafaNotFound": "Chafa가 설치되지 않았습니다. 설치하세요:\n\nmacOS: brew install chafa\nLinux: sudo apt install chafa (또는 sudo dnf install chafa)\nWindows: https://hpjansson.org/chafa/download/ 에서 다운로드",
