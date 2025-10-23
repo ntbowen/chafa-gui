@@ -640,7 +640,7 @@ function App() {
               <div>
                 <h3 className="text-sm font-medium text-gray-300 mb-3 flex items-center gap-2">
                   <div className="w-1 h-4 bg-blue-500 rounded-full"></div>
-                  Original Image
+                  {t('preview.originalImage')}
                 </h3>
                 <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 inline-block border border-gray-700/50 shadow-xl">
                   <img src={imagePreview} alt="Preview" className="max-w-md max-h-64 rounded-lg shadow-lg" />

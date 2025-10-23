@@ -111,7 +111,8 @@
     "loading": "Converting...",
     "error": "Conversion failed",
     "noImage": "No image to preview",
-    "chafaNotFound": "Chafa not installed"
+    "chafaNotFound": "Chafa not installed",
+    "originalImage": "Original Image"
   },
   "status": {
     "ready": "Ready",

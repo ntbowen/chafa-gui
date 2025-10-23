@@ -111,7 +111,8 @@
     "loading": "変換中...",
     "error": "変換に失敗しました",
     "noImage": "プレビューする画像がありません",
-    "chafaNotFound": "Chafa がインストールされていません"
+    "chafaNotFound": "Chafa がインストールされていません",
+    "originalImage": "元の画像"
   },
   "status": {
     "ready": "準備完了",

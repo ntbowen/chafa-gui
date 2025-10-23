@@ -110,8 +110,9 @@
     "title": "预览",
     "loading": "转换中...",
     "error": "转换失败",
-    "noImage": "没有图片可预览",
-    "chafaNotFound": "未安装 Chafa"
+    "noImage": "没有可预览的图片",
+    "chafaNotFound": "未安装 Chafa",
+    "originalImage": "原始图片"
   },
   "status": {
     "ready": "就绪",

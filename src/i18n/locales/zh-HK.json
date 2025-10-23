@@ -110,8 +110,9 @@
     "title": "預覽",
     "loading": "轉換中...",
     "error": "轉換失敗",
-    "noImage": "沒有圖片可預覽",
-    "chafaNotFound": "未安裝 Chafa"
+    "noImage": "冇圖片可以預覽",
+    "chafaNotFound": "未安裝 Chafa",
+    "originalImage": "原始圖片"
   },
   "status": {
     "ready": "就緒",

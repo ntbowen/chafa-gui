@@ -110,8 +110,9 @@
     "title": "미리보기",
     "loading": "변환 중...",
     "error": "변환 실패",
-    "noImage": "미리볼 이미지 없음",
-    "chafaNotFound": "Chafa가 설치되지 않음"
+    "noImage": "미리 볼 이미지가 없습니다",
+    "chafaNotFound": "Chafa가 설치되지 않았습니다",
+    "originalImage": "원본 이미지"
   },
   "status": {
     "ready": "준비됨",

@@ -111,7 +111,8 @@
     "loading": "Конвертация...",
     "error": "Ошибка конвертации",
     "noImage": "Нет изображения для просмотра",
-    "chafaNotFound": "Chafa не установлен"
+    "chafaNotFound": "Chafa не установлен",
+    "originalImage": "Исходное изображение"
   },
   "status": {
     "ready": "Готов",
