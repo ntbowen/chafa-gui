@@ -234,16 +234,16 @@ jobs:
           # Get version from tag
           VERSION=${GITHUB_REF#refs/tags/v}
           
-          # Linux files - rename to unified format
-          find artifacts/linux-deb -name "*.deb" -exec cp {} release/chafa-gui-${VERSION}-linux-amd64.deb \; || true
-          find artifacts/linux-rpm -name "*.rpm" -exec cp {} release/chafa-gui-${VERSION}-linux-x86_64.rpm \; || true
+          # Linux files - unified x64 naming
+          find artifacts/linux-deb -name "*.deb" -exec cp {} release/chafa-gui-${VERSION}-linux-x64.deb \; || true
+          find artifacts/linux-rpm -name "*.rpm" -exec cp {} release/chafa-gui-${VERSION}-linux-x64.rpm \; || true
           
-          # Windows files - rename to include version
+          # Windows files
           find artifacts/windows-x64 -name "*.zip" -exec cp {} release/chafa-gui-${VERSION}-windows-x64.zip \; || true
           
-          # macOS files - rename to include version
-          find artifacts/macos-x64-dmg -name "*.dmg" -exec cp {} release/chafa-gui-${VERSION}-macos-intel.dmg \; || true
-          find artifacts/macos-aarch64-dmg -name "*.dmg" -exec cp {} release/chafa-gui-${VERSION}-macos-apple-silicon.dmg \; || true
+          # macOS files - keep descriptive names for clarity
+          find artifacts/macos-x64-dmg -name "*.dmg" -exec cp {} release/chafa-gui-${VERSION}-macos-x64.dmg \; || true
+          find artifacts/macos-aarch64-dmg -name "*.dmg" -exec cp {} release/chafa-gui-${VERSION}-macos-arm64.dmg \; || true
           
           # List all files
           ls -lh release/
@@ -275,13 +275,13 @@ jobs:
           
           ### Linux (Fedora/RHEL)
           \`\`\`bash
-          sudo rpm -ivh chafa-gui-*-linux-x86_64.rpm
+          sudo rpm -ivh chafa-gui-*-linux-x64.rpm
           chafa-gui
           \`\`\`
           
           ### Linux (Debian/Ubuntu)
           \`\`\`bash
-          sudo dpkg -i chafa-gui-*-linux-amd64.deb
+          sudo dpkg -i chafa-gui-*-linux-x64.deb
           chafa-gui
           \`\`\`
           
