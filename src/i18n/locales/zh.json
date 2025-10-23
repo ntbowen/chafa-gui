@@ -9,7 +9,11 @@
   "controls": {
     "selectImage": "选择图片",
     "saveOutput": "保存输出",
-    "noImage": "未选择图片"
+    "noImage": "未选择图片",
+    "copy": "复制",
+    "save": "保存",
+    "convert": "转换图片",
+    "converting": "转换中..."
   },
   "options": {
     "title": "选项",
@@ -44,26 +48,32 @@
     },
     "symbols": {
       "label": "符号集",
-      "all": "所有符号",
-      "ascii": "仅 ASCII",
-      "block": "块元素",
+      "all": "全部符号",
+      "ascii": "仅ASCII",
+      "block": "方块元素",
+      "braille": "盲文",
+      "half": "半块",
+      "solid": "实心块",
       "border": "边框元素",
       "space": "仅空格",
-      "help": "选择用于构建图像的符号集"
+      "help": "渲染图像的符号集"
     },
     "fill": {
       "label": "填充模式",
       "builtin": "内置",
+      "block": "方块",
       "solid": "实心",
-      "stipple": "点状",
+      "stipple": "点彩",
+      "braille": "盲文",
       "help": "像素填充方式"
     },
     "dither": {
-      "label": "抖动",
+      "label": "抖动算法",
       "none": "无",
-      "ordered": "有序",
-      "diffusion": "扩散",
-      "help": "抖动算法可改善颜色过渡效果"
+      "ordered": "有序抖动",
+      "diffusion": "误差扩散",
+      "noise": "噪声",
+      "help": "抖动算法以获得更好的颜色模拟"
     },
     "ditherIntensity": {
       "label": "抖动强度"
@@ -119,7 +129,8 @@
     "converting": "转换中...",
     "success": "转换成功",
     "error": "错误：{{message}}",
-    "saved": "已保存到 {{path}}"
+    "saved": "已保存到：{{path}}",
+    "copied": "已复制到剪贴板！"
   },
   "errors": {
     "chafaNotFound": "未安装 Chafa。请安装：\n\nmacOS: brew install chafa\nLinux: sudo apt install chafa（或 sudo dnf install chafa）\nWindows: 从 https://hpjansson.org/chafa/download/ 下载",

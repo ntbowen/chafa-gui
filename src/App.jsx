@@ -191,7 +191,7 @@ function App() {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(ansiOutput);
-    setSuccess('Copied to clipboard!');
+    setSuccess(t('status.copied'));
     setTimeout(() => setSuccess(''), 2000);
   };
 
@@ -209,7 +209,7 @@ function App() {
       if (filePath) {
         // 保存文件
         await writeTextFile(filePath, ansiOutput);
-        setSuccess(`Saved to: ${filePath}`);
+        setSuccess(t('status.saved', { path: filePath }));
         setTimeout(() => setSuccess(''), 3000);
       }
     } catch (err) {
@@ -392,9 +392,9 @@ function App() {
                     <option value="all">{t('options.symbols.all')}</option>
                     <option value="ascii">{t('options.symbols.ascii')}</option>
                     <option value="block">{t('options.symbols.block')}</option>
-                    <option value="braille">Braille</option>
-                    <option value="half">Half Block</option>
-                    <option value="solid">Solid</option>
+                    <option value="braille">{t('options.symbols.braille')}</option>
+                    <option value="half">{t('options.symbols.half')}</option>
+                    <option value="solid">{t('options.symbols.solid')}</option>
                     <option value="space">{t('options.symbols.space')}</option>
                   </select>
                   <p className="text-xs text-gray-500 mt-1">
@@ -413,9 +413,9 @@ function App() {
                     className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all cursor-pointer hover:bg-gray-700/70"
                   >
                     <option value="none">{t('options.fill.builtin')}</option>
-                    <option value="block">Block</option>
+                    <option value="block">{t('options.fill.block')}</option>
                     <option value="stipple">{t('options.fill.stipple')}</option>
-                    <option value="braille">Braille</option>
+                    <option value="braille">{t('options.fill.braille')}</option>
                   </select>
                   <p className="text-xs text-gray-500 mt-1">
                     {t('options.fill.help')}
@@ -438,7 +438,7 @@ function App() {
                 <option value="none">{t('options.dither.none')}</option>
                 <option value="ordered">{t('options.dither.ordered')}</option>
                 <option value="diffusion">{t('options.dither.diffusion')}</option>
-                <option value="noise">Noise</option>
+                <option value="noise">{t('options.dither.noise')}</option>
               </select>
               <p className="text-xs text-gray-500 mt-1">
                 {t('options.dither.help')}
@@ -555,12 +555,12 @@ function App() {
                 {loading ? (
                   <>
                     <Loader className="w-5 h-5 animate-spin" />
-                    转换中...
+                    {t('controls.converting')}
                   </>
                 ) : (
                   <>
                     <Settings className="w-5 h-5" />
-                    转换图片
+                    {t('controls.convert')}
                   </>
                 )}
               </button>
@@ -577,12 +577,12 @@ function App() {
             <div className="flex items-center gap-4">
               <h2 className="text-lg font-semibold flex items-center gap-2">
                 <Eye className="w-5 h-5" />
-                预览
+                {t('preview.title')}
               </h2>
               {loading && (
                 <span className="text-sm text-blue-400 flex items-center gap-2">
                   <Loader className="w-4 h-4 animate-spin" />
-                  转换中...
+                  {t('controls.converting')}
                 </span>
               )}
             </div>
@@ -594,14 +594,14 @@ function App() {
                   className="bg-gray-700/50 hover:bg-gray-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm transition-all hover:scale-105 shadow-md"
                 >
                   <Copy className="w-4 h-4" />
-                  复制
+                  {t('controls.copy')}
                 </button>
                 <button
                   onClick={saveToFile}
                   className="bg-gray-700/50 hover:bg-gray-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm transition-all hover:scale-105 shadow-md"
                 >
                   <Download className="w-4 h-4" />
-                  保存
+                  {t('controls.save')}
                 </button>
               </div>
             )}

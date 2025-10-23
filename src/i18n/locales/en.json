@@ -9,7 +9,11 @@
   "controls": {
     "selectImage": "Select Image",
     "saveOutput": "Save Output",
-    "noImage": "No image selected"
+    "noImage": "No image selected",
+    "copy": "Copy",
+    "save": "Save",
+    "convert": "Convert Image",
+    "converting": "Converting..."
   },
   "options": {
     "title": "Options",
@@ -47,6 +51,9 @@
       "all": "All symbols",
       "ascii": "ASCII only",
       "block": "Block elements",
+      "braille": "Braille",
+      "half": "Half Block",
+      "solid": "Solid",
       "border": "Border elements",
       "space": "Space only",
       "help": "Symbol set for image rendering"
@@ -54,8 +61,10 @@
     "fill": {
       "label": "Fill Mode",
       "builtin": "Built-in",
+      "block": "Block",
       "solid": "Solid",
       "stipple": "Stipple",
+      "braille": "Braille",
       "help": "Fill mode for pixels"
     },
     "dither": {
@@ -63,6 +72,7 @@
       "none": "None",
       "ordered": "Ordered",
       "diffusion": "Diffusion",
+      "noise": "Noise",
       "help": "Dithering algorithm for better color simulation"
     },
     "ditherIntensity": {
@@ -119,7 +129,8 @@
     "converting": "Converting...",
     "success": "Conversion successful",
     "error": "Error: {{message}}",
-    "saved": "Saved to {{path}}"
+    "saved": "Saved to: {{path}}",
+    "copied": "Copied to clipboard!"
   },
   "errors": {
     "chafaNotFound": "Chafa is not installed. Please install it:\n\nmacOS: brew install chafa\nLinux: sudo apt install chafa (or sudo dnf install chafa)\nWindows: Download from https://hpjansson.org/chafa/download/",
