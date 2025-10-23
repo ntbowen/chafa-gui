@@ -1,6 +1,6 @@
 {
   "productName": "Chafa GUI",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "identifier": "com.chafa.gui",
   "build": {
     "beforeDevCommand": "npm run dev",

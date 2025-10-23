@@ -1,6 +1,6 @@
 {
   "name": "chafa-gui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A modern cross-platform GUI frontend for Chafa image-to-ANSI converter",
   "homepage": "https://github.com/yourusername/chafa-gui",
   "scripts": {

@@ -1,6 +1,6 @@
 [package]
 name = "chafa-gui"
-version = "1.0.0"
+version = "1.0.1"
 description = "A modern GUI for Chafa image-to-ANSI converter"
 authors = ["Chafa GUI Developer"]
 license = "MIT"
