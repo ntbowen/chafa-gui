@@ -6,6 +6,18 @@ Built with **Tauri 2.9 + Rust + React**, achieving **96% smaller size** than Ele
 
 ---
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="screenshots/main-interface.png" alt="Chafa GUI Main Interface" width="800">
+</p>
+
+<p align="center">
+  <em>Modern dark theme interface with real-time ANSI art preview</em>
+</p>
+
+---
+
 ## ✨ Features
 
 - 🎨 **Image to ANSI Art Conversion** - Powered by Chafa
