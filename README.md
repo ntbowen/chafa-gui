@@ -16,6 +16,8 @@ Built with **Tauri 2.9 + Rust + React**, achieving **96% smaller size** than Ele
   <em>Modern dark theme interface with real-time ANSI art preview</em>
 </p>
 
+<img width="2682" height="2020" alt="image" src="https://github.com/user-attachments/assets/66f05fd6-e3a9-4ae7-ba33-e0a8e03da23d" />
+
 ---
 
 ## ✨ Features
