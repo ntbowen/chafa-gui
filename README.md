@@ -209,8 +209,8 @@ MIT License - see [LICENSE](LICENSE) file for details
 
 ## 📞 Contact
 
-- Project Homepage: https://github.com/yourusername/chafa-gui
-- Issue Tracker: https://github.com/yourusername/chafa-gui/issues
+- Project Homepage: https://github.com/ntbowen/chafa-gui
+- Issue Tracker: https://github.com/ntbowen/chafa-gui/issues
 
 ---
 
