@@ -110,7 +110,7 @@ sudo dpkg -i Chafa-GUI_*.deb
 
 ```bash
 # Clone repository
-git clone <your-repo>
+git clone https://github.com/ntbowen/chafa-gui
 cd chafa-gui
 
 # Install dependencies
